@@ -1,0 +1,28 @@
+.dialog-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  color: #16395d;
+  margin-bottom: 10px;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 380px;
+  padding-top: 10px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-dialog-actions {
+  padding-top: 20px;
+  gap: 10px;
+  
+}
+button.mdc-button.mat-mdc-button-base.mat-mdc-button.mat-unthemed {
+    color: blue;
+}

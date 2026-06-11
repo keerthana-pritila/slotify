@@ -1,0 +1,100 @@
+.aboutPage {
+    background-image: url("blur.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 110px;
+    padding-bottom: 60px;
+    overflow-x: hidden;
+}
+
+.aboutInfo {
+    width: 72%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 35px;
+    border-radius: 24px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .18);
+
+    h2 {
+        color: #f64a0b;
+        font-size: 36px;
+        margin-bottom: 15px;
+        margin-top: 2px;
+    }
+
+    p {
+        color: #406182;
+        font-size: 17px;
+        line-height: 1.8;
+        margin: 0;
+    }
+    .features {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 40px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+.feature-item {
+    color: #24466e;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: left;
+}
+}
+
+.aboutGallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    //Total fractions equal 3.Each column gets 1 fraction
+    gap: 32px;
+    width: 90%;
+    margin: 40px auto 0;
+    justify-items: center;
+}
+
+.sportCard {
+    width:  300px;
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    overflow: hidden;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .18);
+    transition: .3s ease;
+    text-align: center;
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 14px 34px rgba(0, 0, 0, .25);
+    }
+
+    img {
+        width: 100%;
+        height: 210px;
+        object-fit: cover;
+    }
+
+    h3 {
+        color: #24466e;
+        font-size: 22px;
+        margin: 18px 0 10px;
+    }
+
+    p {
+        color: #406182;
+        padding: 0 18px 22px;
+        font-size: 16px;
+        // line-height: 1.6;
+    }
+}

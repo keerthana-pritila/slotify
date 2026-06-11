@@ -1,0 +1,41 @@
+<div class="footerContainer">
+    <div class="updates">
+        <h3>Subscribe to updates</h3>
+        <div class="subscribeBox">
+            <input type="email" placeholder="enter email id" />
+            <button>Subscribe</button>
+        </div>
+    </div>
+    <!-- footer content -->
+    <footer class="footer">
+        <div class="footerBrand">
+            <h1>Slotify</h1>
+            <p>Easy slot booking and smarter scheduling.</p>
+        </div>
+        <div class="footer-column">
+            <h4>🔗Quick Links</h4>
+            <a routerLink="/">Home</a>
+            <a routerLink="/about">About Us</a>
+            <!-- <a>❓Help</a> -->
+            <a (click)=" openHelpPopup()">Help</a>
+            <a routerLink="/login">Login</a>
+        </div>
+        <div class="footer-column">
+            <h4>Support</h4>
+            <a routerLink="/faq">❓FAQ</a>
+            <!-- <a>Contact Support</a> -->
+            <a (click)="openHelpPopup()">📞Booking Help</a>
+            <a>🚩Report Issue</a>
+        </div>
+
+        <div class="footer-column">
+            <h4>Policies</h4>
+            <a>Privacy Policy</a>
+            <a>Terms & Conditions</a>
+            <a>Cancellation Policy</a>
+        </div>
+    </footer>
+    <div class="copyright">
+       <p> © 2025 Slotify. All rights reserved.</p>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+.helpContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    p {
+        font-size: 18px;
+        margin: 12px 0;
+        color: #102339;
+    }
+
+    .faqLink {
+       // color: #16395d;
+        // font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+            color: #f64a0b;
+            text-decoration: underline;
+        }
+    }
+}
+
+h2[mat-dialog-title] {
+    text-align: center;
+    color: #a73207 !important;
+    font-weight: 600;
+}
+
+mat-dialog-actions {
+    justify-content: center;
+
+}
+
+mat-dialog-actions button {
+    // background-color: #16395d;
+    background-color: red;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 16px;
+}

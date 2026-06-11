@@ -1,0 +1,35 @@
+<div class="homePage" id="home">
+
+    <!-- @if(!aboutService.showAbout){ -->
+
+    <div class="slotbox">
+        <h3>Book Your Game</h3>
+        <p>Reserve Courts and play your favourite sports effortlessly.</p>
+        <div class="bookingRow">
+            <div class="field">
+                <label>Explore Sports</label>
+
+                <select [(ngModel)]="selectedSport">
+                    <option value="" disabled selected>explore Sport</option>
+
+                    @for(sport of sports;track sport){
+                    <option [value]="sport">{{sport}}</option>
+                    }
+                </select>
+            </div>
+            <div class="field">
+                <label>📅Today's Date</label>
+                <div class="dateBox">
+                    {{ todayDate }}
+                </div>
+            </div>
+        </div>
+        @if(selectedSport){
+        <p class="selectedSport"> Exploring: {{selectedSport}}</p>
+        <div class="loginHere">
+            <p class="toStyle">please login to book your slot</p>
+            <button class="loginbtn" routerLink="/login">login</button>
+        </div>
+        }
+    </div>
+</div>

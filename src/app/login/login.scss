@@ -1,0 +1,102 @@
+$blueclr: rgb(22 57 93);
+
+:host {
+    background-image: url("imagez.jpeg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 130vh;
+    width: 100%;
+    background-position: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    position: absolute;
+    left: 35%;
+    top: 147px;
+    padding: 28px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    color: $blueclr;
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid $blueclr;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.12);
+
+    h1 {
+        text-align: center;
+        margin-top: 12px;
+    }
+
+    input {
+        padding: 8px;
+        // width: 75%;
+        margin-top: 5px;
+        border-color: $blueclr;
+        outline: none;
+
+    }
+}
+
+.submitRow {
+    // margin-top: 15px;
+
+    .primary {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        background-color: rgb(103, 185, 103);
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.bottomBtns {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+
+    input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .secoundary {
+        background-color: $blueclr;
+    }
+
+    .newuserbtn {
+        background-color: $blueclr;
+    }
+}
+.Error{
+color:red;
+font-size:14px;
+margin-top:4px;
+margin-bottom:8px;
+}
+.forgotLink{
+     color: #16395d;
+    cursor: pointer;
+    text-align: right;
+    font-size: 14px;
+    margin-top: 8px;
+     font-weight: 500;
+}
+.forgotLink:hover {
+    color: #f64a0b;
+    text-decoration: underline;
+}

@@ -1,0 +1,51 @@
+<h2 mat-dialog-title class="dialog-title"> My Profile</h2>
+<mat-dialog-content [formGroup]="profileForm" class="profile-content">
+
+    <mat-form-field appearance="outline" class="full-width">
+
+        <mat-label>Name:</mat-label>
+        <input
+         matInput
+        formControlName="name"
+        maxlength="10"
+        (keypress)="allowOnlyLetters($event)">
+        @if(profileForm.controls.name.touched && profileForm.controls.name.invalid){
+        <mat-error>Name is required</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Phone</mat-label>
+        <input 
+        matInput 
+        formControlName="phone"
+         maxlength="10" 
+         (keypress)="allowonlyNumbers($event)">
+        @if(profileForm.controls.phone.errors?.['required']) {
+        <mat-error>Phone number is required</mat-error>
+        }
+
+        @if(profileForm.controls.phone.errors?.['minlength'] ||
+        profileForm.controls.phone.errors?.['maxlength']) {
+        <mat-error>Phone number must be exactly 10 digits</mat-error>
+        }
+
+        @if(profileForm.controls.phone.errors?.['pattern']) {
+        <mat-error>Only numbers are allowed</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+
+        @if(profileForm.controls.password.touched && profileForm.controls.password.invalid){
+        <mat-error>Password must be 3-6 characters</mat-error>
+        }
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="saveProfile()">Save</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

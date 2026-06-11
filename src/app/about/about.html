@@ -1,0 +1,25 @@
+<div class="aboutPage">
+    <div class="aboutInfo">
+        <h2> About Slotify </h2>
+        <p>
+            Slotify simplifies sports venue booking by helping players discover available slots,
+            reserve facilities, and manage schedules with ease. Whether you're planning a casual match with friends
+            or organizing regular practice sessions, our platform ensures a seamless booking experience.
+        </p>
+        <div class="features">
+            <div class="feature-item">✅ Easy Slot Booking</div>
+            <div class="feature-item">✅ Real-Time Availability</div>
+            <div class="feature-item">✅ Quick Rescheduling</div>
+            <div class="feature-item">✅ User-Friendly Experience</div>
+        </div>
+    </div>
+    <div class="aboutGallery">
+        @for(sport of sportImages;track sport){
+        <div class="sportCard">
+            <img [src]="sport.img">
+            <h3> {{sport.title}} </h3>
+            <p> {{sport.info}} </p>
+        </div>
+        }
+    </div>
+</div>

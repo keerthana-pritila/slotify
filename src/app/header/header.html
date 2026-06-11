@@ -1,0 +1,36 @@
+<div class="headContainer">
+    <div class="topLeft">
+
+        <ul class="menu">
+            <h1 routerLink="/">Slotify</h1>
+            <li class="menu-items"><a (click)="goHome()" routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+            <li class="menu-items"><a routerLink="/about" routerLinkActive="active-link">About Us </a></li>
+            <li class="menu-items"><a routerLink="/achievements" routerLinkActive="active-link">Achievements </a></li>
+            <li class="menu-items "><a (click)="openhelpPopUp()">Help </a></li>
+            <!-- Use Spaces for Multiple Classes: class="menu-items dropdown" (2 classes) below -->
+            <li class="menu-items dropdown">
+                <a>Amenities </a>
+                <ul class="dropdown-menu">
+                    <li><span>✔</span> Parking</li>
+                    <li><span>✔</span> Washroom</li>
+                    <li><span>✔</span> First Aid</li>
+                    <li><span>✔</span> Drinking Water</li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+    @if(router.url !== '/register' && router.url !== '/login') {
+    <!-- if condition for hiding buttons  -->
+    <div class="topRight">
+        @if(!isLoggedIn){
+        <button type="button" class="topBtn-Style" routerLink="/register">Register </button>
+        <button type="submit" class="topBtn-Style" routerLink="/login">login</button>
+        }
+        <!-- Logged out → buttons visible
+            Logged in → buttons hidden  -->
+    </div>
+    }
+</div>

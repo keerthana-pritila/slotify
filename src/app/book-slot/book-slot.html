@@ -1,0 +1,83 @@
+<div class="bookingCard">
+    <div class="pageHeader">
+        <button class="backbtn" routerLink="/dashboard">⬅️ Back to dashboard</button>
+        <h1>Book Slot</h1>
+    </div>
+    <div class="progressBar">
+
+        <!-- If currentStep is 1 or higher ,The condition is true
+        Angular adds the active class to the element.
+         The final HTML becomes <div class="active">Venue</div>
+         If currentStep is 0 or less: The condition is false.
+         The final HTML becomes <div>Venue</div>. -->
+
+        <div [class.active]="currentStep>=1">Venue</div>
+        <div [class.active]="currentStep>=2">Date</div>
+        <div [class.active]="currentStep>=3">Time</div>
+        <div [class.active]="currentStep>=4">Confirm</div>
+        <div [class.active]="currentStep>=5">Payment</div>
+        <div [class.active]="currentStep>=6">Done</div>
+    </div>
+    @if(currentStep == 1) {
+    <h2>Select Venue</h2>
+    <div class="venueGrid">
+        @for (venue of venues; track venue) {
+        <button class="venuebtn" (click)="selectedVenue=venue"
+            [class.selected]="selectedVenue==venue">{{venue}}</button>
+        }
+    </div>
+    }
+    @if(currentStep == 2) {
+    <h2>Select Date</h2>
+    <input type="date" [(ngModel)]="selectedDate" [min]="minDate" />
+    <!-- old dates will be disabled -->
+    }
+    @if(currentStep == 3) {
+    <h2>Select Time</h2>
+    <div class="venueGrid">
+        @for (slot of timeSlots; track slot) {
+        <button class="venuebtn" (click)="selectedTime=slot" [class.selected]="selectedTime==slot">{{slot}}</button>
+        }
+    </div>
+    }
+    @if(currentStep == 4) {
+    <h2>Booking Summary</h2>
+    <p>Location:{{selectedLocation}}</p>
+    <p>Venue: {{selectedVenue}}</p>
+    <p>Date: {{selectedDate}}</p>
+    <p>Time: {{selectedTime}}</p>
+    <button class="confirmbtn" (click)="nextStep()">Proceed to payment </button>
+    }
+    @if(currentStep == 5) {
+    <h2>Make Payment</h2>
+    <p>Total Amount : ₹{{bookingAmount}}</p>
+    <div class="venueGrid">
+        <button class="venuebtn" (click)="upiPayment()" [class.selected]="paymentMethod=='UPI'">UPI</button>
+
+        <button class="venuebtn" (click)="paymentMethod='Card'" [class.selected]="paymentMethod=='Card'">Card</button>
+
+        <button class="venuebtn" (click)="paymentMethod='Cash'" [class.selected]="paymentMethod=='Cash'">Cash</button>
+    </div>
+
+    <div style="margin-top:30px;">
+        <button class="confirmbtn" (click)="nextStep()">Pay Now</button>
+    </div>
+    }
+    @if(currentStep == 6) {
+    <!-- <h2>Booking Successful</h2> -->
+    <!-- <p>Your slot has been booked successfully.</p> -->
+    <p>Location:{{selectedLocation}}</p>
+    <p>Venue:{{selectedVenue}}</p>
+    <p>Date: {{selectedDate}}</p>
+    <p>Time: {{selectedTime}}</p>
+    <p>Payment: {{paymentMethod}}</p>
+    <button class="confirmbtn" routerLink="/dashboard">Back to dashboard</button>
+    }
+    <div class="progressbtns">
+        @if(currentStep > 1) {
+        <button (click)="prevStep()">Back</button>
+        }
+        @if(currentStep < 6) { <button (click)="nextStep()"[disabled]="cannotGoNext()">Next</button>
+            }
+    </div>
+</div>

@@ -1,0 +1,50 @@
+:host{
+     display: block;
+    min-height: 100vh;
+    background-image: url("/images/blur.png");
+    background-size: cover;
+    background-position: center;
+    padding-top: 100px;
+}
+.faqContainer {
+    // width: 80%;
+    margin: auto;
+     max-width: 900px;
+h1 {
+    text-align: center;
+    color: #f45112;
+    margin-bottom: 30px;
+}
+.faqCard{
+      background: rgba(255,255,255,0.15);
+    //backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    h3 {
+        color: #16395d;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #24466e;
+    }
+}
+}
+.backbtn{
+//margin-bottom: 20px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #16395d;
+    color: white;
+    top: 112px;
+    position: absolute;
+    margin-left: 28px;
+
+    &:hover {
+        background: #f45112;
+    }
+}

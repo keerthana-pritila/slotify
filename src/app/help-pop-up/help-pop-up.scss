@@ -1,0 +1,81 @@
+.helpBox {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity .25s ease,
+        background .25s ease,
+        visibility .25s ease;
+    z-index: 2000;
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+        background: rgba(0, 0, 0, .35);
+
+    }
+
+    .helpPopUp {
+        width: 360px;
+        background: rgba(255, 255, 255, .92);
+        backdrop-filter: blur(12px);
+        border-radius: 16px;
+        padding: 22px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        opacity: 0;
+        transform: translateY(-60px) scale(1);
+        transition:
+            opacity .25s ease,
+            transform .25s ease;
+
+        .popupHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+
+            h3 {
+                margin: 0;
+                color: #23446d
+            }
+
+            .closebtn {
+                background: #d11414;
+                font-size: 22px;
+                cursor: pointer;
+                color: #fff3ef;
+                transition: 0.2s;
+                border-radius: 35px;
+                border: 1px solid #f64a0b;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        .helpContent {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            p {
+                margin: 0;
+                padding: 12px;
+                background-color: #edf2ff;
+                border-radius: 10px;
+                color: #23446d;
+                font-size: 15px;
+            }
+        }
+    }
+}
+.helpBox.show .helpPopUp {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}

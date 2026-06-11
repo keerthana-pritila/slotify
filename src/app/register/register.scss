@@ -1,0 +1,142 @@
+$favcolor: rgb(250, 250, 235);
+$blueclr: rgb(22 57 93);
+
+:host {
+    background-image: url("imagez.jpeg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    background-position: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    // position: absolute;
+    margin-top: 100px;
+    left: 35%;
+    top: 90px;
+    padding: 25px;
+    margin-top: 85px;
+    border: 1px solid $blueclr;
+    border-radius: 6px;
+    color: $blueclr;
+    font-size: 18px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    // align-items: center;
+
+    h1 {
+        color: $blueclr;
+        text-align: center;
+        align-items: center;
+        margin-top: 2px;
+
+    }
+
+    input {
+        padding: 8px;
+        width: 75%;
+        margin-top: 5px;
+        border-color: $blueclr;
+        outline: none;
+        //  transition: 0.2s ease;
+    }
+}
+
+.Error {
+    color: red;
+    font-size: 14px;
+}
+
+input.error-border {
+    border: 2px solid red !important;
+}
+
+.submitBtnStyle {
+
+    input {
+        width: 45%;
+        background-color: rgb(103, 185, 103);
+        border-radius: 8px;
+        color: white;
+        font-size: 16px;
+        font-weight: 400;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+.regformStyle {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginBackbtns {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    p {
+        margin-left: 2px;
+        margin-bottom: 2px;
+    }
+
+    input {
+        background-color: $blueclr;
+        border: none;
+        border-radius: 8px;
+        width: 35%;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+    }
+}
+
+// .containerPopUp {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background: rgba(0, 0, 0, 0.5);
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     z-index: 1000;
+
+//     .popUpBox {
+//         background: white;
+//         padding: 30px;
+//         border-radius: 10px;
+//         width: 320px;
+//         text-align: center;
+//         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+//         h2 {
+//             margin-bottom: 10px;
+//         }
+
+//         p {
+//             margin-bottom: 20px;
+//         }
+//     }
+
+//     button {
+//         padding: 10px 20px;
+//         border: none;
+//         background: green;
+//         color: white;
+//         border-radius: 5px;
+//         cursor: pointer;
+//     }
+// }

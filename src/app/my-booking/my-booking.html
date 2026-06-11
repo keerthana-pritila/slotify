@@ -1,0 +1,39 @@
+<div class="bookingPage">
+    <div class="pageHeader">
+        <button class="backbtn" routerLink="/dashboard">⬅️ Back to dashboard</button>
+        <h1>My Bookings</h1>
+    </div>
+    @if(bookings.length > 0) {
+    <!-- @if(false) {  //to Test ,if no bookings-empty state will display  -->
+    <div class="bookingGrid">
+        @for (booking of bookings; track $index) {
+        <div class="bookingCard">
+            <!-- <img [src]="booking.image" [alt]="booking.sport"> -->
+            <h2>{{booking.sport}}</h2>
+            <!-- <p> {{booking.location}}</p>
+            <p> {{booking.date}}</p>
+            <p> {{booking.time}}</p> -->
+            <button (click)="selectedBooking = booking">View Details</button>
+        </div>
+        }
+    </div>
+    } @else{
+    <div class="emptyBooking">
+        <h2> No bookings yet!</h2>
+        <p>Book your first slot and start playing.</p>
+        <button routerLink="/bookSlot">Book Slot</button>
+    </div>
+    }
+    @if(selectedBooking) {
+    <div class="popUpContainer">
+        <div class="popUpCard">
+            <button class="closeBtn" (click)="selectedBooking = null">X</button>
+            <img [src]="selectedBooking.image" [alt]="selectedBooking.sport">
+            <h2>{{selectedBooking.sport}}</h2>
+            <p>Location:{{selectedBooking.location}}</p>
+            <p>Date:{{selectedBooking.date}}</p>
+            <p>Time:{{selectedBooking.time}}</p>
+        </div>
+    </div>
+    }
+</div>

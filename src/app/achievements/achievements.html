@@ -1,0 +1,20 @@
+<div class="achievementPage">
+    <div class="carouselContainer">
+        <button class="arrow left" (click)="prevSlide()">◀</button>
+        <div class="slide">
+            <img [src]="achievements[currentSlide].image" alt="achievement">
+            <div class="details">
+                <h2>{{achievements[currentSlide].title}} </h2>
+                <p>{{achievements[currentSlide].description}}</p>
+                <span>{{achievements[currentSlide].year}}</span>
+            </div>
+        </div>
+        <button class="arrow right" (click)="nextSlide()">▶</button>
+        <div class="dots">
+            @for (item of achievements; track $index) {
+            <span class="dot" [class.active]="currentSlide === $index" (click)="currentSlide = $index">
+            </span>
+            }
+        </div>
+    </div>
+</div>

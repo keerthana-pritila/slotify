@@ -1,0 +1,112 @@
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from "@angular/router";
+//import { QRCodeComponent } from 'angularx-qrcode';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faSquareXmark } from '@fortawesome/free-solid-svg-icons';
+import { MatButtonModule } from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { DemoMaterialpop } from '../demomaterialpop/demomaterialpop'; 
+import { ToastrService } from 'ngx-toastr';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+@Component({
+  selector: 'app-book-slot',
+  imports: [FormsModule, RouterLink, FontAwesomeModule,MatButtonModule,MatInputModule,MatFormFieldModule,MatDialogModule],
+  templateUrl: './book-slot.html',
+  styleUrl: './book-slot.scss',
+})
+export class BookSlot {
+  closeIcon = faSquareXmark;
+  currentStep: number = 1;
+  selectedLocation: string = "";
+  selectedVenue: string = '';
+  selectedDate: string = '';
+  selectedTime: string = '';
+  minDate: string = '';
+  // calendar date prior to the specified minDate will be grayed out, disabled, and unclickable
+  paymentMethod: string = '';
+  bookingAmount: number = 800;
+  openQr: boolean = false;
+
+  venues = [
+    'Badminton Court🏸',
+    'Football Turf🏈',
+    'Cricket Ground🏏',
+    'Tennis Court🎾',
+    'Basketball Ground🏀',
+    'Volleyball Ground🏐'
+  ];
+  timeSlots = [
+    '6AM-7AM',
+    '7AM-8AM',
+    '5PM-6PM',
+    '6PM-7PM'
+  ];
+  locations = [
+    "Madhapur",
+    "Gachibowli",
+    "Attapur",
+    "Nagole"
+  ];
+  paymentUrl: string = 'No Payment';
+  constructor(private dialog: MatDialog, private toastr: ToastrService) {
+    const today = new Date();
+    this.minDate = today.toISOString().split('T')[0];
+  
+  const location = localStorage.getItem('selectedLocation');
+
+  if(location) {
+    this.selectedLocation = location;
+  }
+}
+cannotGoNext() : boolean {
+  switch(this.currentStep) {
+    case 1:return this.selectedVenue === '';
+    case 2:return this.selectedDate === '';
+    case 3:return this.selectedTime === '';
+    case 4:return false;
+    case 5:return this.paymentMethod === '';
+    default:return false;
+  }
+}
+  nextStep(): void {
+    if(this.cannotGoNext()) {
+      return;
+    }
+     if (this.currentStep === 5) {
+    this.toastr.success('Payment completed successfully','Payment Success');
+    //Show toast when payment is successful
+  }
+    if (this.currentStep < 6) {
+      this.currentStep++;
+    }
+  }
+  prevStep(): void {
+    if (this.currentStep > 1) {
+      this.currentStep--;
+    }
+  }
+
+  upiPayment(): void {
+    this.openQr = true;
+    // upi://pay?pa=YOUR_UPI_ID&pn=YOUR_NAME&am=AMOUNT&tn=TRANSACTION_NOTE&cu=INR
+    this.paymentUrl = `upi://pay?pa=vijaykandadai@ybl&pn=Vijay&am=${this.bookingAmount}&cu=INR`
+    this.dialog.open(DemoMaterialpop, {
+    width: '400px',
+    data: {
+      paymentUrl: this.paymentUrl,
+      amount: this.bookingAmount
+    }
+  });
+  }
+}
