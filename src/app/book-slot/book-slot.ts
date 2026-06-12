@@ -5,11 +5,11 @@ import { RouterLink } from "@angular/router";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSquareXmark } from '@fortawesome/free-solid-svg-icons';
 import { MatButtonModule } from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
-import { DemoMaterialpop } from '../demomaterialpop/demomaterialpop'; 
+import { DemoMaterialpop } from '../demomaterialpop/demomaterialpop';
 import { ToastrService } from 'ngx-toastr';
 import {
   MAT_DIALOG_DATA,
@@ -19,9 +19,11 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { BehaviorSubject, combineLatest } from 'rxjs';
+
 @Component({
   selector: 'app-book-slot',
-  imports: [FormsModule, RouterLink, FontAwesomeModule,MatButtonModule,MatInputModule,MatFormFieldModule,MatDialogModule],
+  imports: [FormsModule, RouterLink, FontAwesomeModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatDialogModule],
   templateUrl: './book-slot.html',
   styleUrl: './book-slot.scss',
 })
@@ -34,6 +36,14 @@ export class BookSlot {
   selectedTime: string = '';
   minDate: string = '';
   // calendar date prior to the specified minDate will be grayed out, disabled, and unclickable
+
+  // RxJS streams for booking filters
+  location$ = new BehaviorSubject<string>('');
+  venue$ = new BehaviorSubject<string>('');
+  date$ = new BehaviorSubject<string>('');
+  time$ = new BehaviorSubject<string>('');
+
+  
   paymentMethod: string = '';
   bookingAmount: number = 800;
   openQr: boolean = false;
@@ -59,34 +69,57 @@ export class BookSlot {
     "Nagole"
   ];
   paymentUrl: string = 'No Payment';
+
+  loadAvailableSlots(
+    location: string,
+    venue: string,
+    date: string,
+    time: string
+  ) {  
+    console.log('Loading available slots for:', location, venue, date, time);
+  }
+
   constructor(private dialog: MatDialog, private toastr: ToastrService) {
     const today = new Date();
     this.minDate = today.toISOString().split('T')[0];
-  
-  const location = localStorage.getItem('selectedLocation');
 
-  if(location) {
-    this.selectedLocation = location;
+    const location = localStorage.getItem('selectedLocation');
+
+    if (location) {
+      this.selectedLocation = location;
+       this.location$.next(location); //RXJS :Send Initial Location Value to stream
+    }
+    // Listen for changes in all filters
+combineLatest([ 
+  this.location$,
+  this.venue$,
+  this.date$,
+  this.time$
+]).subscribe(
+ ([location, venue, date, time]) => {
+   console.log('Filters Changed:',  location, venue, date, time);
+    this.loadAvailableSlots(location, venue, date, time);
+ });
   }
-}
-cannotGoNext() : boolean {
-  switch(this.currentStep) {
-    case 1:return this.selectedVenue === '';
-    case 2:return this.selectedDate === '';
-    case 3:return this.selectedTime === '';
-    case 4:return false;
-    case 5:return this.paymentMethod === '';
-    default:return false;
+
+  cannotGoNext(): boolean {
+    switch (this.currentStep) {
+      case 1: return this.selectedVenue === '';
+      case 2: return this.selectedDate === '';
+      case 3: return this.selectedTime === '';
+      case 4: return false;
+      case 5: return this.paymentMethod === '';
+      default: return false;
+    }
   }
-}
   nextStep(): void {
-    if(this.cannotGoNext()) {
+    if (this.cannotGoNext()) {
       return;
     }
-     if (this.currentStep === 5) {
-    this.toastr.success('Payment completed successfully','Payment Success');
-    //Show toast when payment is successful
-  }
+    if (this.currentStep === 5) {
+      this.toastr.success('Payment completed successfully', 'Payment Success');
+      //Show toast when payment is successful
+    }
     if (this.currentStep < 6) {
       this.currentStep++;
     }
@@ -102,11 +135,25 @@ cannotGoNext() : boolean {
     // upi://pay?pa=YOUR_UPI_ID&pn=YOUR_NAME&am=AMOUNT&tn=TRANSACTION_NOTE&cu=INR
     this.paymentUrl = `upi://pay?pa=vijaykandadai@ybl&pn=Vijay&am=${this.bookingAmount}&cu=INR`
     this.dialog.open(DemoMaterialpop, {
-    width: '400px',
-    data: {
-      paymentUrl: this.paymentUrl,
-      amount: this.bookingAmount
-    }
-  });
+      width: '400px',
+      data: {
+        paymentUrl: this.paymentUrl,
+        amount: this.bookingAmount
+      }
+    });
   }
+
+  selectVenue(venue:string) {
+  this.selectedVenue = venue;
+  this.venue$.next(venue); //means Venue changed,Notify everyone(Update venue stream)
+}
+
+onDateChange(date:string){
+  this.date$.next(date); // Update date stream
+}
+
+selectTime(slot: string) {
+  this.selectedTime = slot;
+  this.time$.next(slot); // Time changed
+}
 }

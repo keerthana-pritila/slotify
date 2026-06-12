@@ -50,10 +50,10 @@ export class Dashboard {
       localStorage.setItem('selectedLocation', this.selectedLocation);
     }
   }
-  logout(): void {
-    localStorage.removeItem('loggedInUser');
-    this.router.navigate(["/"]);
-  }
+  // logout(): void {
+  //   localStorage.removeItem('loggedInUser');
+  //   this.router.navigate(["/"]);
+  // }
   myProfile(): void {
     const dialogRef = this.dialog.open(ProfileDialog, { width: '450px' });
     dialogRef.afterClosed().subscribe( result => {

@@ -22,21 +22,23 @@
     <h2>Select Venue</h2>
     <div class="venueGrid">
         @for (venue of venues; track venue) {
-        <button class="venuebtn" (click)="selectedVenue=venue"
+        <!-- <button class="venuebtn" (click)="selectedVenue=venue"
+            [class.selected]="selectedVenue==venue">{{venue}}</button> -->
+            <button class="venuebtn" (click)="selectVenue(venue)"
             [class.selected]="selectedVenue==venue">{{venue}}</button>
         }
     </div>
     }
     @if(currentStep == 2) {
     <h2>Select Date</h2>
-    <input type="date" [(ngModel)]="selectedDate" [min]="minDate" />
-    <!-- old dates will be disabled -->
+    <input type="date" [(ngModel)]="selectedDate" [min]="minDate" (ngModelChange)="onDateChange($event)"/>
+    <!-- minDate -old dates will be disabled -->
     }
     @if(currentStep == 3) {
     <h2>Select Time</h2>
     <div class="venueGrid">
         @for (slot of timeSlots; track slot) {
-        <button class="venuebtn" (click)="selectedTime=slot" [class.selected]="selectedTime==slot">{{slot}}</button>
+        <button class="venuebtn" (click)="selectTime(slot)" [class.selected]="selectedTime==slot">{{slot}}</button>
         }
     </div>
     }

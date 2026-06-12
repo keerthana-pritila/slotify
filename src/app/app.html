@@ -1,4 +1,7 @@
+<!-- @if(router.url !== '/logoutLoading'){ -->
 <app-header></app-header>
-<!-- <app-home></app-home> -->
+<!-- } -->
+@if(router.url !== '/logoutLoading'){
 <router-outlet></router-outlet>
+}
 <app-footer></app-footer>

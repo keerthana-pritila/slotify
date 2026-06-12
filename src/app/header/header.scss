@@ -136,3 +136,71 @@ $whitish: rgb(238, 121, 3);
     }
 }
 
+.profileDropdown {
+    position: relative;
+    overflow: visible;
+    z-index: 2000;
+
+    .profileBtn {
+        min-width: 150px;
+        padding: 10px 18px;
+        border: none;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, .3);
+        color: #16395d;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .profileMenu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 2000;
+        width: 220px;
+        background: white;
+        border-radius: 12px;
+        border: 1px solid #ececec;
+        // display: none;
+        overflow: hidden;
+        padding: 6px 0;
+        margin-top: 8px;
+
+
+        button {
+            width: 100%;
+            border: none;
+            background: transparent;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            color: #23446d;
+            cursor: pointer;
+            //text-align: left;
+            margin-right: 0;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        button:hover {
+            background: #f5f7fa;
+        }
+
+        .seperateSection {
+            height: 1px;
+            background: #ececec;
+            margin: 6px 0;
+        }
+
+        .logoutBtn {
+            color: #e53935 !important; // red text
+        }
+
+        .logoutBtn:hover {
+            background: #fff5f5;
+        }
+    }
+}

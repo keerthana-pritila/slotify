@@ -16,6 +16,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-profile-dialog',
+   standalone: true,
   imports: [ReactiveFormsModule, MatDialogModule, MatAnchor,MatFormFieldModule,
     MatInputModule,
     MatButtonModule],

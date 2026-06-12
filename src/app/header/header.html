@@ -23,14 +23,35 @@
     </div>
 
     @if(router.url !== '/register' && router.url !== '/login') {
-    <!-- if condition for hiding buttons  -->
+
     <div class="topRight">
         @if(!isLoggedIn){
         <button type="button" class="topBtn-Style" routerLink="/register">Register </button>
         <button type="submit" class="topBtn-Style" routerLink="/login">login</button>
         }
-        <!-- Logged out → buttons visible
-            Logged in → buttons hidden  -->
+        <!-- Logged out → buttons(register,login) visible
+            Logged in → buttons(register,login) hidden  -->
+
+        @if(isLoggedIn){
+        <div class="profileDropdown">
+            <!-- <button class="profileBtn">👤{{loggedInUsername}}▼</button> -->
+            <button class="profileBtn" (click)="toggleProfileMenu()">{{loggedInUsername}}▼</button>
+
+            @if(isProfileMenuOpen){
+            <div class="profileMenu">
+                <button (click)="openProfile();isProfileMenuOpen = false"> My Profile</button>
+                <button routerLink="/bookSlot"> Book Slot</button>
+                <button routerLink="/myBooking"> History</button>
+                <!-- <button disabled> 📍{{selectedLocation}}</button> -->
+                <div class = "seperateSection"> </div>
+                    <button  class="logoutBtn" (click)="confirmLogout();isProfileMenuOpen = false"> Logout </button>
+                    <!-- logged in → logout button visible
+                     logged out → logout button hidden -->
+               
+            </div>
+        }
+        </div>
+        }
     </div>
     }
 </div>

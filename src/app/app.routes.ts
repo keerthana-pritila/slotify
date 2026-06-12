@@ -8,6 +8,7 @@ import { BookSlot } from './book-slot/book-slot';
 import { Achievements } from './achievements/achievements';
 import { MyBooking } from './my-booking/my-booking';
 import { Faq } from './faq/faq';
+import {LogoutLoading } from './logout-loading/logout-loading';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -18,5 +19,7 @@ export const routes: Routes = [
     { path: 'bookSlot', component: BookSlot },
     { path: 'achievements', component: Achievements },
     { path: 'myBooking', component: MyBooking },
-    {path: 'faq', component: Faq}
+    {path: 'faq', component: Faq},
+    {path: 'logoutLoading', component: LogoutLoading}
+    
 ];
