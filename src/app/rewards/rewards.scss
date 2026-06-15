@@ -1,0 +1,84 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background-image: url("/images/blur.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.rewardsCard {
+    width: 720px;
+    padding: 35px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, .12);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, .25);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, .25);
+    margin-top: 75px;
+
+    .pageHeader {
+        position: relative;
+
+        h1 {
+            color: #f45112;
+            text-align: center;
+            font-size: 38px;
+        }
+
+        .backbtn {
+            position: absolute;
+            left: 0;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .25);
+            color: #16395d;
+            cursor: pointer;
+        }
+    }
+
+    .pointsCard {
+        margin: 30px auto;
+        width: 300px;
+        padding: 25px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, .2);
+        text-align: center;
+
+        h2 {
+            color: #f45112;
+            font-size: 42px;
+            margin: 0;
+        }
+
+        p {
+            color: #16395d;
+            margin-top: 10px;
+        }
+    }
+
+    .infoGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .infoBox {
+        padding: 20px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, .18);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, .15);
+
+        h3 {
+            color: #f45112;
+        }
+
+        p {
+            color: #16395d;
+        }
+    }
+}

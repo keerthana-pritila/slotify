@@ -28,6 +28,7 @@
         position: relative;
         margin: auto;
 
+
         .topPart {
             display: flex;
             justify-content: space-between;
@@ -78,7 +79,7 @@
 
         .profileBtn {
             background: #16395d;
-            
+
 
             &:hover {
                 background: #24466e;
@@ -134,22 +135,12 @@
                 box-shadow: 0 12px 24px rgba(0, 0, 0, .25);
                 background: rgba(255, 255, 255, .25);
             }
+
         }
 
-        // .logoutBtn {
-        //     border: none;
-        //     padding: 10px 22px;
-        //     border-radius: 12px;
-        //     background: #f45112;
-        //     color: white;
-        //     font-size: 15px;
-        //     font-weight: 600;
-        //     cursor: pointer;
-        //     transition: .25s;
-
-        //     &:hover {
-        //         background: #d63f06;
-        //     }
+        // .rewardCard {
+        //    // border: 2px solid #f45112;
+    
         // }
     }
 }

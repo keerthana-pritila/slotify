@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';
 // import { Home } from './home/home';
 import { Footer } from './footer/footer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,6 @@ import { Footer } from './footer/footer';
   styleUrl: './app.scss'
 })
 export class App {
+  constructor(public router: Router){}
   protected readonly title = signal('realtime');
 }

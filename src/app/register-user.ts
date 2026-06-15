@@ -5,4 +5,6 @@ export interface RegisterUser {
     password: string;
     confirmPassword: string;
     id: string;
+    points?: number; 
+    //Use ? because old users don't have the field yet.
 }

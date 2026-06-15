@@ -1,3 +1,5 @@
+import { inject } from '@angular/core';
+import { Api } from '../api';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from "@angular/router";
@@ -28,6 +30,8 @@ import { BehaviorSubject, combineLatest } from 'rxjs';
   styleUrl: './book-slot.scss',
 })
 export class BookSlot {
+  api = inject(Api);
+
   closeIcon = faSquareXmark;
   currentStep: number = 1;
   selectedLocation: string = "";
@@ -43,7 +47,7 @@ export class BookSlot {
   date$ = new BehaviorSubject<string>('');
   time$ = new BehaviorSubject<string>('');
 
-  
+
   paymentMethod: string = '';
   bookingAmount: number = 800;
   openQr: boolean = false;
@@ -75,7 +79,7 @@ export class BookSlot {
     venue: string,
     date: string,
     time: string
-  ) {  
+  ) {
     console.log('Loading available slots for:', location, venue, date, time);
   }
 
@@ -87,19 +91,19 @@ export class BookSlot {
 
     if (location) {
       this.selectedLocation = location;
-       this.location$.next(location); //RXJS :Send Initial Location Value to stream
+      this.location$.next(location); //RXJS :Send Initial Location Value to stream
     }
     // Listen for changes in all filters
-combineLatest([ 
-  this.location$,
-  this.venue$,
-  this.date$,
-  this.time$
-]).subscribe(
- ([location, venue, date, time]) => {
-   console.log('Filters Changed:',  location, venue, date, time);
-    this.loadAvailableSlots(location, venue, date, time);
- });
+    combineLatest([
+      this.location$,
+      this.venue$,
+      this.date$,
+      this.time$
+    ]).subscribe(
+      ([location, venue, date, time]) => {
+        console.log('Filters Changed:', location, venue, date, time);
+        this.loadAvailableSlots(location, venue, date, time);
+      });
   }
 
   cannotGoNext(): boolean {
@@ -117,7 +121,8 @@ combineLatest([
       return;
     }
     if (this.currentStep === 5) {
-      this.toastr.success('Payment completed successfully', 'Payment Success');
+      this.addRewardPoints(); //calling it  after successful payment
+      this.toastr.success('Payment completed successfully. +10 reward points added!','Payment Success');
       //Show toast when payment is successful
     }
     if (this.currentStep < 6) {
@@ -143,17 +148,33 @@ combineLatest([
     });
   }
 
-  selectVenue(venue:string) {
-  this.selectedVenue = venue;
-  this.venue$.next(venue); //means Venue changed,Notify everyone(Update venue stream)
-}
+  selectVenue(venue: string) {
+    this.selectedVenue = venue;
+    this.venue$.next(venue); //means Venue changed,Notify everyone(Update venue stream)
+  }
 
-onDateChange(date:string){
-  this.date$.next(date); // Update date stream
-}
+  onDateChange(date: string) {
+    this.date$.next(date); // Update date stream
+  }
 
-selectTime(slot: string) {
-  this.selectedTime = slot;
-  this.time$.next(slot); // Time changed
-}
+  selectTime(slot: string) {
+    this.selectedTime = slot;
+    this.time$.next(slot); // Time changed
+  }
+  addRewardPoints(): void {
+    const userData = localStorage.getItem('loggedInUser');
+
+    if (!userData) {
+      return;
+    }
+    const user = JSON.parse(userData);
+    user.points = (user.points || 0) + 10;
+    this.api.updateUser(user.id, user).subscribe({
+      next: () => {
+        console.log('Reward points updated');
+      }
+    });
+    localStorage.setItem('loggedInUser', JSON.stringify(user));
+  }
+
 }

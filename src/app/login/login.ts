@@ -22,7 +22,7 @@ export class Login {
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
 
-    password: new FormControl('', [ Validators.required, Validators.minLength(3), Validators.maxLength(6)])
+    password: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(6)])
   });
   backToHome(): void {
     this.router.navigate(['/']);
@@ -32,36 +32,42 @@ export class Login {
     this.isvalid = !this.isvalid;
     console.log('test')
   }
-  loginSubmit():void {
-    if(this.loginForm.invalid) {
+  loginSubmit(): void {
+    if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
     }
     const loginData = this.loginForm.value;
     this.api.getUsers().subscribe(users => {
       let userFound = false;
-      for(let i = 0;i <users.length; i++){
-        if(users[i].email == loginData.email && users[i].password == loginData.password){
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].email == loginData.email && users[i].password == loginData.password) {
 
-          localStorage.setItem("loggedInUser",JSON.stringify(users[i]));
+          // Add points field for old users
+          if (users[i].points === undefined) {
+            users[i].points = 0;
+            this.api.updateUser(users[i].id, users[i]).subscribe();
+          }
+          
+          localStorage.setItem("loggedInUser", JSON.stringify(users[i]));
           userFound = true;
 
-          this.toastr.success('Logged in successfully','Success'); //Show Success Toast
-             this.router.navigate(['/dashboard']);
-             break;
+          this.toastr.success('Logged in successfully', 'Success'); //Show Success Toast
+          this.router.navigate(['/dashboard']);
+          break;
         }
       }
-      if(!userFound) {
+      if (!userFound) {
         // alert("user not registered or invalid credentials");
-        this.toastr.error( 'Invalid email or password','Login Failed');
+        this.toastr.error('Invalid email or password', 'Login Failed');
       }
     });
- 
+
   }
-  forgotPassword() :void {
+  forgotPassword(): void {
     this.dialog.open(ForgotPassword, {
-      width:'450px',
-      panelClass: 'forgot-password-dialog' 
+      width: '450px',
+      panelClass: 'forgot-password-dialog'
       //  added custom class when opening Forgot Password dialog bcz
       // it targets outermost container wrapper of that component & Enables Global Styling
     });

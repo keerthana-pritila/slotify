@@ -18,7 +18,8 @@
       "email": "keerthana@gmail.com",
       "password": "1234",
       "confirmPassword": "123456",
-      "id": "38aw-bYkEu4"
+      "id": "38aw-bYkEu4",
+      "points": 10
     },
     {
       "name": "anushkaa",
@@ -66,7 +67,8 @@
       "email": "lillly@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
-      "id": "39SCCrBggZ4"
+      "id": "39SCCrBggZ4",
+      "points": 0
     },
     {
       "name": "madyy",
@@ -147,6 +149,15 @@
       "password": "123456",
       "confirmPassword": "123456",
       "id": "Nf-BWxPP0T0"
+    },
+    {
+      "name": "saiteja",
+      "phone": "2343645768",
+      "email": "saiteja@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "points": 0,
+      "id": "yxpbFImrn6Y"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -63,6 +63,7 @@ export class Register {
       return;
     }
     const formData = this.registrationForm.value as RegisterUser;
+    formData.points = 0; //initial points for every user
     console.log(formData);
 
     this.api.getUsers().subscribe(users => {

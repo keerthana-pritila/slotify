@@ -1,7 +1,8 @@
-<!-- @if(router.url !== '/logoutLoading'){ -->
-<app-header></app-header>
-<!-- } -->
+<!-- writing if condotions to Hide Header & Footer on Logout Page -->
 @if(router.url !== '/logoutLoading'){
-<router-outlet></router-outlet>
+<app-header></app-header>
 }
+<router-outlet></router-outlet>
+@if(router.url !== '/logoutLoading'){
 <app-footer></app-footer>
+}

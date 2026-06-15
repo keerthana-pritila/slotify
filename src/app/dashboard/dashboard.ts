@@ -18,6 +18,9 @@ export class Dashboard {
 
   //for displaying welcome + username
   username: string = "";
+  // rewardPoints: number = 0;
+  points: number = 0;
+
   selectedLocation: string = "Select Location"; //for location dropdown 
   locations = [
     "Madhapur",
@@ -25,20 +28,14 @@ export class Dashboard {
     "Attapur",
     "Nagole"
   ];
-  // constructor() { //loading current user data
-  //   const userData = localStorage.getItem('loggedInUser');
-  //   if (userData) {
-  //     const user = JSON.parse(userData);
-  //     this.profileForm.controls.name.setValue(user.name);
-  //     this.profileForm.controls.phone.setValue(user.phone);
-  //     this.profileForm.controls.password.setValue(user.password);
-  //   }
-  // }
+
   ngOnInit(): void {
     const userData = localStorage.getItem('loggedInUser');
     if (userData) {
       const user = JSON.parse(userData);
       this.username = user.name;
+      //  this.rewardPoints = user.points ?? 0;
+       this.points = user.points || 0;
     }
     const savedLocation = localStorage.getItem('selectedLocation');
     if (savedLocation) {
