@@ -5,7 +5,9 @@ import { Api } from '../api';
 import { inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableDataSource } from '@angular/material/table';
-import{ToastrService} from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteUserDialog } from '../delete-user-dialog/delete-user-dialog';
 
 @Component({
   selector: 'app-admin-users',
@@ -16,6 +18,8 @@ import{ToastrService} from 'ngx-toastr';
 export class AdminUsers {
   api = inject(Api);
   toastr = inject(ToastrService);
+  dialog = inject(MatDialog);
+
 
   displayedColumns: string[] = ['name', 'email', 'points', 'actions'];
   // users: any[] = []; 
@@ -32,12 +36,19 @@ export class AdminUsers {
   }
 
   deleteUser(user: any): void {
-    this.api.deleteUser(user.id).subscribe(() => {
+    const dialogRef = this.dialog.open(DeleteUserDialog, { width: '350px' });
 
-      // Remove the deleted user from the data source or table
-      this.dataSource.data = this.dataSource.data.filter(u => u.id !== user.id);
+    dialogRef.afterClosed().subscribe(result => {
 
-      this.toastr.success('User deleted successfully', 'Success');
+      if (result) {
+        this.api.deleteUser(user.id).subscribe(() => {
+
+          // Remove the deleted user from the data source or table
+          this.dataSource.data = this.dataSource.data.filter(u => u.id !== user.id);
+
+          this.toastr.success('User deleted successfully', 'Success');
+        });
+      }
     });
-  }
+}
 }
