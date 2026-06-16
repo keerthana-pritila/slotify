@@ -5,21 +5,13 @@
       "name": "test"
     },
     {
-      "name": "jack",
-      "phone": "1324343545",
-      "email": "nithin@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": "ov0B7hDJb0s"
-    },
-    {
       "name": "keer",
       "phone": "1111111111",
       "email": "keerthana@gmail.com",
       "password": "1234",
       "confirmPassword": "123456",
       "id": "38aw-bYkEu4",
-      "points": 10
+      "points": 90
     },
     {
       "name": "anushkaa",

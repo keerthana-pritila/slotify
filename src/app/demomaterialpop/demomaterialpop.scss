@@ -38,3 +38,12 @@ mat-dialog-actions {
 .mat-mdc-dialog-content {
   overflow: hidden !important;
 }
+fa-icon.ng-fa-icon
+
+ {
+    position: absolute;
+    top: calc(50% - 350px);
+    right: 25px;
+    color: red;
+    font-size: 28px;
+}

@@ -8,6 +8,7 @@ $textLight: #d7d7d7;
     color: white;
     margin-top: 100px;
 }
+
 .updates {
     width: 85%;
     margin: auto;
@@ -21,12 +22,14 @@ $textLight: #d7d7d7;
 
     transform: translateY(-35px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
-     h3 {
+
+    h3 {
         margin: 0;
         font-size: 22px;
         font-weight: 600;
     }
 }
+
 .subscribeBox {
     display: flex;
     align-items: center;
@@ -57,6 +60,7 @@ $textLight: #d7d7d7;
         }
     }
 }
+
 .footer {
     padding: 20px 60px 45px;
     display: flex;
@@ -64,6 +68,7 @@ $textLight: #d7d7d7;
     flex-wrap: wrap;
     gap: 30px;
 }
+
 .footerBrand {
     max-width: 260px;
 
@@ -80,6 +85,7 @@ $textLight: #d7d7d7;
         margin-top: 12px;
     }
 }
+
 .footer-column {
     display: flex;
     flex-direction: column;
@@ -104,6 +110,7 @@ $textLight: #d7d7d7;
         }
     }
 }
+
 .copyright {
     border-top: 1px solid rgba(255, 255, 255, .12);
     text-align: center;
@@ -113,5 +120,19 @@ $textLight: #d7d7d7;
         margin: 0;
         color: #b6b9c7;
         font-size: 14px;
+    }
+
+    .adminLink {
+        display: block;
+        margin-top: 8px;
+        color: #8f95aa;
+        font-size: 12px;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: 0.7;
+        &:hover {
+            opacity: 1;
+            color: #f64a0b;
+        }
     }
 }

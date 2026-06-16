@@ -9,6 +9,8 @@ import {
 import { QRCodeComponent } from 'angularx-qrcode';
 import { MatButtonModule } from '@angular/material/button';
 // import { AfterViewInit } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faSquareXmark } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-demomaterialpop',
     standalone: true,
@@ -18,12 +20,16 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose
+    MatDialogClose,
+    FontAwesomeModule
   ],
   templateUrl: './demomaterialpop.html',
   styleUrl: './demomaterialpop.scss',
 })
 export class DemoMaterialpop implements AfterViewInit {
+
+   closeIcon = faSquareXmark;
+
     showPopup = false;
   constructor(
   @Inject(MAT_DIALOG_DATA) public data: any

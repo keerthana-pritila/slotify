@@ -51,6 +51,7 @@ export class BookSlot {
   paymentMethod: string = '';
   bookingAmount: number = 800;
   openQr: boolean = false;
+  bookingCompleted: boolean = false; // Prevents reward points from being added multiple times
 
   venues = [
     'Badminton Court🏸',
@@ -117,12 +118,19 @@ export class BookSlot {
     }
   }
   nextStep(): void {
-    if (this.cannotGoNext()) {
+    if (this.cannotGoNext()) {  // Stop moving to next step if required fields are empty
       return;
     }
-    if (this.currentStep === 5) {
-      this.addRewardPoints(); //calling it  after successful payment
-      this.toastr.success('Payment completed successfully. +10 reward points added!','Payment Success');
+
+    // When payment is completed (Step 5),
+    // add reward points only once
+    //!this.bookingCompleted --means --Booking is NOT completed yet
+    if (this.currentStep === 5 && !this.bookingCompleted) {
+      this.addRewardPoints(); //calling it  after successful payment, Gives +10 reward points to user
+
+      this.bookingCompleted = true;  // Mark booking as completed so points are not added again
+
+      this.toastr.success('Payment completed successfully. +10 reward points added!', 'Payment Success');
       //Show toast when payment is successful
     }
     if (this.currentStep < 6) {
@@ -138,7 +146,9 @@ export class BookSlot {
   upiPayment(): void {
     this.openQr = true;
     // upi://pay?pa=YOUR_UPI_ID&pn=YOUR_NAME&am=AMOUNT&tn=TRANSACTION_NOTE&cu=INR
-    this.paymentUrl = `upi://pay?pa=vijaykandadai@ybl&pn=Vijay&am=${this.bookingAmount}&cu=INR`
+   // this.paymentUrl = `upi://pay?pa=vijaykandadai@ybl&pn=Vijay&am=${this.bookingAmount}&cu=INR`
+    this.paymentUrl = `upi://pay?pa=7780163335@yescred@ybl&pn=Keerthana&am=${this.bookingAmount}&cu=INR`
+
     this.dialog.open(DemoMaterialpop, {
       width: '400px',
       data: {
@@ -162,19 +172,24 @@ export class BookSlot {
     this.time$.next(slot); // Time changed
   }
   addRewardPoints(): void {
-    const userData = localStorage.getItem('loggedInUser');
+    const userData = localStorage.getItem('loggedInUser');   // Get logged-in user from browser storage
 
-    if (!userData) {
+    if (!userData) {   // Stop if no user is logged in
       return;
     }
-    const user = JSON.parse(userData);
+    const user = JSON.parse(userData);  // Convert JSON string into object
+
+     // Add 10 points to existing points
+  // If points do not exist, start from 0
     user.points = (user.points || 0) + 10;
+
+     // Update user in JSON Server database
     this.api.updateUser(user.id, user).subscribe({
       next: () => {
         console.log('Reward points updated');
       }
     });
-    localStorage.setItem('loggedInUser', JSON.stringify(user));
+    localStorage.setItem('loggedInUser', JSON.stringify(user));   // Update localStorage so UI refreshes immediately
   }
 
 }

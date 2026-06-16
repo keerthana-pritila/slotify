@@ -28,5 +28,9 @@ export class Api {
     return this.http.put(`${this.url}/${id}`, user); 
     //if you change environments later, everything still works.
   }
+
+  deleteUser(id: string) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }
 
