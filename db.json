@@ -5,21 +5,13 @@
       "name": "test"
     },
     {
-      "name": "keer",
+      "name": "keerthanap",
       "phone": "1111111111",
       "email": "keerthana@gmail.com",
       "password": "1234",
       "confirmPassword": "123456",
       "id": "38aw-bYkEu4",
-      "points": 90
-    },
-    {
-      "name": "anushkaa",
-      "phone": "1324354656",
-      "email": "anushka@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": "RbHj2gfGLfU"
+      "points": 120
     },
     {
       "name": "Nithin",
@@ -27,7 +19,8 @@
       "email": "nithin333@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
-      "id": "rg88gFiH7_g"
+      "id": "rg88gFiH7_g",
+      "points": 0
     },
     {
       "name": "vani",
@@ -35,7 +28,8 @@
       "email": "vani@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
-      "id": "E0n7z7npiy0"
+      "id": "E0n7z7npiy0",
+      "points": 0
     },
     {
       "name": "Rachana",
@@ -43,7 +37,8 @@
       "email": "rachana@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
-      "id": "myoQPHM7NIU"
+      "id": "myoQPHM7NIU",
+      "points": 10
     },
     {
       "name": "Rosh",
@@ -51,16 +46,8 @@
       "email": "rosh@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
-      "id": "1qzMpuSZ6rU"
-    },
-    {
-      "name": "lilly",
-      "phone": "1232435465",
-      "email": "lillly@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": "39SCCrBggZ4",
-      "points": 0
+      "id": "1qzMpuSZ6rU",
+      "points": 10
     },
     {
       "name": "madyy",
@@ -68,7 +55,8 @@
       "email": "mady@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
-      "id": "zeM3EpsQ5xA"
+      "id": "zeM3EpsQ5xA",
+      "points": 0
     },
     {
       "name": "summy",
@@ -76,7 +64,8 @@
       "email": "summy@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
-      "id": "_6qzBGeiVtI"
+      "id": "_6qzBGeiVtI",
+      "points": 0
     },
     {
       "name": "amar",
@@ -85,14 +74,6 @@
       "password": "123456",
       "confirmPassword": "123456",
       "id": "ZQpjF5e99Ps"
-    },
-    {
-      "name": "dhana",
-      "phone": "1232436547",
-      "email": "dhana@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": "TUhTYCNLkAk"
     },
     {
       "name": "vasudha",
@@ -108,7 +89,8 @@
       "email": "sony@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
-      "id": "-SwcnNynLxA"
+      "id": "-SwcnNynLxA",
+      "points": 0
     },
     {
       "name": "nitish",
@@ -124,23 +106,8 @@
       "email": "ishan@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
-      "id": "08CdK4TBr_0"
-    },
-    {
-      "name": "kavya",
-      "phone": "1324365769",
-      "email": "kavya@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": "OJ0eKchLWPk"
-    },
-    {
-      "name": "jay",
-      "phone": "1324354657",
-      "email": "jay@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": "Nf-BWxPP0T0"
+      "id": "08CdK4TBr_0",
+      "points": 0
     },
     {
       "name": "saiteja",

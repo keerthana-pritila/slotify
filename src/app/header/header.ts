@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { HomeViewService } from '../home-view-service';
 import { RouterLinkActive } from '@angular/router';
@@ -8,34 +8,44 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ProfileDialog } from '../profile-dialog/profile-dialog';
 import { LogoutDialog } from '../logout-dialog/logout-dialog';
 
+
 @Component({
   selector: 'app-header',
   imports: [RouterLink, RouterLinkActive, MatDialogModule],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header {
+export class Header implements OnInit {
   isProfileMenuOpen = false;
   showhelpPopUp = false;
-  username: string = ""; //to display in header ,after login
+  // username: string = ""; //to display in header ,after login
+   loggedInUsername: string = '';
 
   constructor(public router: Router,
     public HomeViewServive: HomeViewService,
     private dialog: MatDialog) { }
 
+    ngOnInit(): void {
+      const userData = localStorage.getItem('loggedInUser');
+      if (userData) {
+        const user = JSON.parse(userData);
+        this.loggedInUsername = user.name;
+      }
+    }
     toggleProfileMenu(): void {
   this.isProfileMenuOpen = !this.isProfileMenuOpen;
 }
   get isLoggedIn(): boolean {
     return !!localStorage.getItem('loggedInUser'); //! - NOT ,!! - Reverse of NOT 
   }
-  get loggedInUsername(): string {
-    const userData = localStorage.getItem('loggedInUser');
-    if (userData) {
-      return JSON.parse(userData).name;
-    }
-    return "";
-  }
+  // get loggedInUsername(): string {
+  //   const userData = localStorage.getItem('loggedInUser');
+  //   if (userData) {
+  //     return JSON.parse(userData).name;
+  //   }
+  //   return "";
+  // }
+ 
 
   get selectedLocation(): string { /* Gets the stored location name */
   return localStorage.getItem('selectedLocation') || 'No Location'; 
@@ -75,7 +85,7 @@ const dialogRef = this.dialog.open(
     if(result) {
       localStorage.removeItem('loggedInUser');
       localStorage.removeItem('selectedLocation');
-      this.router.navigate(['/logoutLoading']);
+      this.router.navigate(['/logoutLoading'], { replaceUrl: true });
     }
   });
 }
