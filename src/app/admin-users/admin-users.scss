@@ -7,6 +7,19 @@ th {
     font-weight: bold;
 }
 
-td, th {
+td,
+th {
     padding: 12px;
 }
+
+.deleteBtn {
+   background-color: #f44336 !important;
+    color: white !important;
+
+    &:hover {
+       background-color: #d32f2f !important;
+    }
+}
+// span.mdc-button__label {
+//     color: white;
+// }

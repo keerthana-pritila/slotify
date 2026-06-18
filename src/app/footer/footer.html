@@ -2,8 +2,8 @@
     <div class="updates">
         <h3>Subscribe to updates</h3>
         <div class="subscribeBox">
-            <input type="email" placeholder="enter email id" />
-            <button>Subscribe</button>
+            <input type="email" placeholder="enter your email" [(ngModel)]="subscriberEmail" />
+            <button (click)="subscribe()">Subscribe</button>
         </div>
     </div>
     <!-- footer content -->

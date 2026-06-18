@@ -62,7 +62,8 @@ $textLight: #d7d7d7;
 }
 
 .footer {
-    padding: 20px 60px 45px;
+    // padding: 20px 60px 45px;
+    padding: 10px 60px 35px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -90,6 +91,7 @@ $textLight: #d7d7d7;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: flex-start; // prevents children from stretching
 
     h4 {
         margin-bottom: 12px;
@@ -98,6 +100,7 @@ $textLight: #d7d7d7;
     }
 
     a {
+        display: inline-block;
         text-decoration: none;
         color: $textLight;
         cursor: pointer;
@@ -106,15 +109,16 @@ $textLight: #d7d7d7;
 
         &:hover {
             color: $accent;
-            padding-left: 4px;
+            //padding-left: 4px;
+            transform: translateX(4px);
         }
     }
 }
 
 .copyright {
     border-top: 1px solid rgba(255, 255, 255, .12);
-    text-align: center;
-    padding: 16px;
+    // text-align: center;
+    padding: 6px;
 
     p {
         margin: 0;
@@ -130,6 +134,7 @@ $textLight: #d7d7d7;
         text-decoration: none;
         cursor: pointer;
         opacity: 0.7;
+
         &:hover {
             opacity: 1;
             color: #f64a0b;

@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { HomeViewService } from '../home-view-service';
 import { RouterLinkActive } from '@angular/router';
@@ -15,37 +15,40 @@ import { LogoutDialog } from '../logout-dialog/logout-dialog';
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header implements OnInit {
+export class Header {
   isProfileMenuOpen = false;
   showhelpPopUp = false;
   // username: string = ""; //to display in header ,after login
-   loggedInUsername: string = '';
+   //loggedInUsername: string = '';
 
   constructor(public router: Router,
     public HomeViewServive: HomeViewService,
     private dialog: MatDialog) { }
 
-    ngOnInit(): void {
-      const userData = localStorage.getItem('loggedInUser');
-      if (userData) {
-        const user = JSON.parse(userData);
-        this.loggedInUsername = user.name;
-      }
-    }
+    // ngOnInit(): void {
+    //   const userData = localStorage.getItem('loggedInUser');
+    //   if (userData) {
+    //     const user = JSON.parse(userData);
+    //     //this.loggedInUsername = user.name;
+    //   }
+    // }
     toggleProfileMenu(): void {
   this.isProfileMenuOpen = !this.isProfileMenuOpen;
 }
   get isLoggedIn(): boolean {
     return !!localStorage.getItem('loggedInUser'); //! - NOT ,!! - Reverse of NOT 
   }
-  // get loggedInUsername(): string {
-  //   const userData = localStorage.getItem('loggedInUser');
-  //   if (userData) {
-  //     return JSON.parse(userData).name;
-  //   }
-  //   return "";
-  // }
+  get loggedInUsername(): string {
+    const userData = localStorage.getItem('loggedInUser');
+    if (userData) {
+      return JSON.parse(userData).name;
+    }
+    return "";
+  }
  
+  get isAdminLoggedIn(): boolean {
+  return localStorage.getItem('adminLoggedIn') === 'true';
+}
 
   get selectedLocation(): string { /* Gets the stored location name */
   return localStorage.getItem('selectedLocation') || 'No Location'; 
@@ -88,5 +91,10 @@ const dialogRef = this.dialog.open(
       this.router.navigate(['/logoutLoading'], { replaceUrl: true });
     }
   });
+}
+
+adminLogout(): void {
+  localStorage.removeItem('adminLoggedIn');
+  this.router.navigate(['/admin-login']);
 }
 }

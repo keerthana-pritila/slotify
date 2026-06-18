@@ -20,10 +20,18 @@ export class Login implements OnInit {
   dialog = inject(MatDialog);
 
   ngOnInit(): void {
+    // Check if an admin is already logged in
+    const admin = localStorage.getItem('adminLoggedIn');
+    if (admin) {
+      this.toastr.warning('Admin is already logged in', 'Access Denied');
+      this.router.navigate(['/admin']);  // Redirect to admin dashboard
+      return;
+    }
+
+    // Check if user is logged in
     const user = localStorage.getItem('loggedInUser'); //Since user exists, immediately redirect:
-    if(user) {
+    if (user) {
       this.router.navigate(['/']); // If user data exists in localStorage, navigate to home
-    
     }
   }
 
@@ -57,13 +65,13 @@ export class Login implements OnInit {
             users[i].points = 0;
             this.api.updateUser(users[i].id, users[i]).subscribe();
           }
-          
+
           //This saves the logged-in user in the browser
-          localStorage.setItem("loggedInUser", JSON.stringify(users[i])); 
+          localStorage.setItem("loggedInUser", JSON.stringify(users[i]));
           userFound = true;
 
           this.toastr.success('Logged in successfully', 'Success'); //Show Success Toast
-          this.router.navigate(['/dashboard']); 
+          this.router.navigate(['/dashboard']);
           break;
         }
       }
@@ -80,10 +88,10 @@ export class Login implements OnInit {
       panelClass: 'forgot-password-dialog',
       //  added custom class when opening Forgot Password dialog bcz
       // it targets outermost container wrapper of that component & Enables Global Styling
-       data: { type: 'user' }
-        //Pass data to the dialog:like whether its for admin or user
+      data: { type: 'user' }
+      //Pass data to the dialog:like whether its for admin or user
       //  because using same forgot-password component for both user and admin.
     });
   }
-  
+
 }
