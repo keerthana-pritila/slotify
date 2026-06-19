@@ -13,6 +13,7 @@ import { Rewards } from './rewards/rewards';
 import { AdminLogin } from './admin-login/admin-login';
 import { Admin } from './admin/admin';
 import { AdminUsers } from './admin-users/admin-users';
+import { Venues } from './venues/venues';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -30,7 +31,8 @@ export const routes: Routes = [
     {
         path: 'admin', component: Admin,
         children: [
-            { path: 'users', component: AdminUsers } //child routes
+            { path: 'users', component: AdminUsers }, //child routes
+            {path: 'venues', component: Venues}
         ]
     },
 

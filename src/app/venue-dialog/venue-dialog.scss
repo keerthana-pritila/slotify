@@ -1,0 +1,39 @@
+.venueInfo {
+    margin-top: 15px;
+
+    p {
+        margin-bottom: 10px;
+    }
+
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+
+    .editBtn {
+        background: #2196f3;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+    .deleteBtn {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+    .closeBtn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+}

@@ -8,12 +8,10 @@
         <button class="logoutBtn" (click)="adminLogout()">Logout</button>
     </div>
     <div class="content">
-         <h1>Outside If: {{ totalUsers }}</h1>
-        @if(router.url === '/admin'){
+        <!-- @if(router.url === '/admin' && totalUsers >= 0){ -->
+         @if(router.url === '/admin'){
         <div class="welcomeCard">
             <h1>Welcome to Slotify Admin Panel</h1>
-            <p>Debug Total Users: {{ totalUsers }}</p>
-           <!-- <p>Test: {{ 999 }}</p> -->
             <p>Manage users, bookings, and venues efficiently.</p>
             <div class="infoBox">
                 <h3>Admin Features:</h3>
@@ -21,12 +19,9 @@
                     <li>View and manage users</li>
                     <li>View and manage bookings</li>
                     <li>View and manage venues</li>
-                    <!-- <li>✔ Manage Users</li>
-                    <li>✔ View Bookings</li>
-                    <li>✔ Manage Venues</li> -->
                 </ul>
             </div>
-            <p>Debug Users Count: {{ totalUsers }}</p>
+
             <div class="statsContainer">
                 <div class="statCard usersCard">
                     <h2>{{ totalUsers }}</h2>

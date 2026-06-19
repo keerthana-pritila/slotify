@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { ForgotPassword } from '../forgot-password/forgot-password';
-import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-admin-login',
@@ -12,7 +11,7 @@ import { OnInit } from '@angular/core';
   templateUrl: './admin-login.html',
   styleUrl: './admin-login.scss',
 })
-export class AdminLogin implements OnInit {
+export class AdminLogin  {
   router = inject(Router);
   toastr = inject(ToastrService);
   dialog = inject(MatDialog);
@@ -21,6 +20,7 @@ export class AdminLogin implements OnInit {
   password: string = '';
 
   ngOnInit(): void {
+  
     // Check if user is logged in
     const user = localStorage.getItem('loggedInUser');
     if (user) {
@@ -34,6 +34,7 @@ export class AdminLogin implements OnInit {
     if (admin) {
       this.router.navigate(['/admin']); // Redirect to admin dashboard
     }
+    // console.log("user",1);
   }
 
   adminLogin(): void {

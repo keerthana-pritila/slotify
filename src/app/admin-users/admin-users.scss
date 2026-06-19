@@ -1,25 +1,131 @@
-table {
-    width: 100%;
-    background: white;
+// h1{
+//   //  color: #f64a0b;
+//     color: #16395d;
+// }
+// table {
+//     width: 100%;
+//     background: white;
+// }
+
+// th {
+//     font-weight: bold;
+//     color: #e4766e !important;
+//     font-size: 18px;
+// }
+
+// td,
+// th {
+//     padding: 12px;
+//     color: #16395d;
+// }
+// tr.mat-mdc-header-row.mdc-data-table__header-row.cdk-header-row {
+//     background-color: #16395d;
+// }
+// .editBtn {
+//   background-color: #2196f3 !important;
+//   color: white !important;
+//   margin-right: 8px;
+// }
+
+// .deleteBtn {
+//    background-color: #f44336 !important;
+//     color: white !important;
+
+//     &:hover {
+//        background-color: #d32f2f !important;
+//     }
+// }
+
+
+.table-container {
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-top: 20px;
 }
 
-th {
-    font-weight: bold;
+.table-header {
+  margin-bottom: 20px;
 }
 
-td,
-th {
-    padding: 12px;
+h1 {
+  color: #16395d;
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.user-table {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Header */
+.mat-mdc-header-row {
+  background: #16395d !important;
+}
+
+.mat-mdc-header-cell {
+  color: white !important;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Cells */
+.mat-mdc-cell {
+  color: #374151;
+  font-size: 14px;
+  padding: 16px;
+}
+
+/* Row Hover */
+.mat-mdc-row {
+  transition: all 0.25s ease;
+}
+
+.mat-mdc-row:hover {
+  background-color: #f8fafc;
+  transform: scale(1.002);
+}
+
+/* Zebra Stripes */
+.mat-mdc-row:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Bottom Borders */
+.mat-mdc-cell,
+.mat-mdc-header-cell {
+  border-bottom: 1px solid #e5e7eb;
+}
+.editBtn {
+  background: #4e82f3 !important;
+  color: white !important;
+  border-radius: 8px;
+  margin-right: 8px;
+  font-weight: 500;
+
+  &:hover {
+    background: #1d4ed8 !important;
+  }
 }
 
 .deleteBtn {
-   background-color: #f44336 !important;
-    color: white !important;
+  background: #f55757 !important;
+  color: white !important;
+  border-radius: 8px;
+  font-weight: 500;
 
-    &:hover {
-       background-color: #d32f2f !important;
-    }
+  &:hover {
+    background: #b91c1c !important;
+  }
 }
-// span.mdc-button__label {
-//     color: white;
-// }
+.mat-mdc-row:nth-child(even) {
+  background-color: #f8fafc;
+}
+.mat-mdc-row:nth-child(odd) {
+  background-color: #ffffff;
+}

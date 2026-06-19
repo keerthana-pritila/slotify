@@ -33,7 +33,7 @@ export class Dashboard {
   ];
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('loggedInUser')); 
+    console.log(localStorage.getItem('loggedInUser'));
     const userData = localStorage.getItem('loggedInUser');
     if (!userData) {
       this.router.navigate(['/login']); //whe user not loggedin then when clicks on back then goes to login
@@ -44,41 +44,41 @@ export class Dashboard {
     this.username = user.name;
     //  this.rewardPoints = user.points ?? 0;
     this.points = user.points || 0;
-  
-  const savedLocation = localStorage.getItem('selectedLocation');
-  if(savedLocation) {
-    this.selectedLocation = savedLocation;
-  }
-}
-saveLocation(): void {
-  if(this.selectedLocation !== 'Select Location') { //if default select location,then dont save 
-  localStorage.setItem('selectedLocation', this.selectedLocation);
-}
-  }
-goToBookSlot(): void {
-  if(this.selectedLocation === 'Select Location') {
-  // this.toastr.error('Please select a location before booking a slot.', 'Location Required');
-  this.toastr.warning('Please select location first', 'Location Required');
-  return;
-}
-this.router.navigate(['/bookSlot']);
-  }
-// logout(): void {
-//   localStorage.removeItem('loggedInUser');
-//   this.router.navigate(["/"]);
-// }
-myProfile(): void {
-  const dialogRef = this.dialog.open(ProfileDialog, { width: '450px' });
-  dialogRef.afterClosed().subscribe(result => {
-    //   console.log('Dialog result:', result);
-    if (result) {
 
-      this.username = result.name;
-      this.cdr.detectChanges(); //this.cdr is an object that lets you manually tell Angular to refresh the UI.so profile updates .
-      //console.log('Username updated to:', this.username);
+    const savedLocation = localStorage.getItem('selectedLocation');
+    if (savedLocation) {
+      this.selectedLocation = savedLocation;
     }
-  });
-}  
-  
+  }
+  saveLocation(): void {
+    if (this.selectedLocation !== 'Select Location') { //if default select location,then dont save 
+      localStorage.setItem('selectedLocation', this.selectedLocation);
+    }
+  }
+  goToBookSlot(): void {
+    if (this.selectedLocation === 'Select Location') {
+      // this.toastr.error('Please select a location before booking a slot.', 'Location Required');
+      this.toastr.warning('Please select location first', 'Location Required');
+      return;
+    }
+    this.router.navigate(['/bookSlot']);
+  }
+  // logout(): void {
+  //   localStorage.removeItem('loggedInUser');
+  //   this.router.navigate(["/"]);
+  // }
+  myProfile(): void {
+    const dialogRef = this.dialog.open(ProfileDialog, { width: '450px' });
+    dialogRef.afterClosed().subscribe(result => {
+      //   console.log('Dialog result:', result);
+      if (result) {
+
+        this.username = result.name;
+        this.cdr.detectChanges(); //this.cdr is an object that lets you manually tell Angular to refresh the UI.so profile updates .
+        //console.log('Username updated to:', this.username);
+      }
+    });
+  }
+
 }
 
