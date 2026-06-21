@@ -1,16 +1,19 @@
-import { Component ,inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { VenueDialog } from '../venue-dialog/venue-dialog';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-venues',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './venues.html',
   styleUrl: './venues.scss',
 })
 export class Venues {
   dialog = inject(MatDialog);
+  flippedCard: number | null = null; // stores currently flipped card
+
   venues = [
     {
       id: 1,
@@ -35,12 +38,25 @@ export class Venues {
     }
   ];
 
-  openVenue(venue:any){
+  flipCard(id: number) {
+    // Check if the clicked card is already flipped
+    if (this.flippedCard === id) {
+      // If the same card is clicked again,
+      // close it by setting flippedCard to null
+      this.flippedCard = null;
+    }
+    else {
+      // If a different card is clicked,
+      // store its id so that card gets flipped/opened
+      this.flippedCard = id;
+    }
 
-    this.dialog.open(VenueDialog,{
-      width:'450px',
-      data:venue
+  }
+
+  openVenue(venue: any) {
+    this.dialog.open(VenueDialog, {
+      width: '450px',
+      data: venue
     });
-
   }
 }

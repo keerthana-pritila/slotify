@@ -1,11 +1,26 @@
 <h2>Venue Management</h2>
 <div class="venuesGrid">
     @for(venue of venues; track venue.id){
-    <div class="venueCard" (click)="openVenue(venue)">
-        <h3>{{venue.name}}</h3>
-        <p>{{venue.location}}</p>
-        <p>₹{{venue.price}} / hr</p>
-        <span>{{venue.status}}</span>
+    <div class="flipCard" [class.flipped]="flippedCard === venue.id" (click)="flipCard(venue.id)">
+        <div class="flipInner">
+            <!-- FRONT SIDE -->
+            <div class="venueCard front">
+                <h3>{{venue.name}}</h3>
+                
+                <span class="status">
+                    <span class="dot" [class.green]="venue.status === 'Active'"
+                        [class.red]="venue.status === 'Inactive'">
+                    </span>
+                    {{venue.status}}
+                </span>
+            </div>
+            <!-- BACK SIDE -->
+            <div class="venueCard back">
+                <p>{{venue.location}}</p>
+                <p>₹{{venue.price}} / hr</p>
+                <button (click)="openVenue(venue); $event.stopPropagation()">View Details</button>
+            </div>
+        </div>
     </div>
     }
 </div>

@@ -5,17 +5,72 @@
     //  and crowd in as many columns as you can fit.
     gap: 20px;
 
+    .flipCard {
+        height: 220px;
+        perspective: 1000px;
+        cursor: pointer;
+    }
+
+    .flipInner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+
+    .flipped .flipInner {
+        transform: rotateY(180deg);
+    }
+
     .venueCard {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
         background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(10px);
-        padding: 20px;
-        border-radius: 15px;
-        cursor: pointer;
-        transition: 0.3s;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        backface-visibility: hidden;
+    }
 
-        &:hover {
-            transform: translateY(-5px);
-        }
+    .back {
+        transform: rotateY(180deg);
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 18px;
+        border: none;
+        border-radius: 8px;
+        background: #16395d;
+        color: white;
+        cursor: pointer;
+    }
+
+    .status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+        font-weight: 600;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    .green {
+        background-color: #28a745;
+    }
+
+    .red {
+        background-color: #dc3545;
     }
 }
