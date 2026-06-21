@@ -49,10 +49,8 @@
       "id": "myoQPHM7NIU",
       "points": 10
     },
+    
     {
-<<<<<<< HEAD
-      "name": "madyy",
-=======
       "name": "Rohini",
       "phone": "1234566587",
       "email": "rosh@gmail.com",
@@ -63,7 +61,6 @@
     },
     {
       "name": "madhuri14",
->>>>>>> 47c93140eb8d60bcbebb05757492b2c936ad3b61
       "phone": "1324546768",
       "email": "mady@gmail.com",
       "password": "123456",
