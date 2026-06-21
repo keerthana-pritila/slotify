@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { HomeViewService } from '../home-view-service';
 import { RouterLinkActive } from '@angular/router';
@@ -7,6 +7,7 @@ import { HelpDialog } from '../help-dialog/help-dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProfileDialog } from '../profile-dialog/profile-dialog';
 import { LogoutDialog } from '../logout-dialog/logout-dialog';
+
 
 @Component({
   selector: 'app-header',
@@ -17,12 +18,20 @@ import { LogoutDialog } from '../logout-dialog/logout-dialog';
 export class Header {
   isProfileMenuOpen = false;
   showhelpPopUp = false;
-  username: string = ""; //to display in header ,after login
+  // username: string = ""; //to display in header ,after login
+   //loggedInUsername: string = '';
 
   constructor(public router: Router,
     public HomeViewServive: HomeViewService,
     private dialog: MatDialog) { }
 
+    // ngOnInit(): void {
+    //   const userData = localStorage.getItem('loggedInUser');
+    //   if (userData) {
+    //     const user = JSON.parse(userData);
+    //     //this.loggedInUsername = user.name;
+    //   }
+    // }
     toggleProfileMenu(): void {
   this.isProfileMenuOpen = !this.isProfileMenuOpen;
 }
@@ -36,6 +45,10 @@ export class Header {
     }
     return "";
   }
+ 
+  get isAdminLoggedIn(): boolean {
+  return localStorage.getItem('adminLoggedIn') === 'true';
+}
 
   get selectedLocation(): string { /* Gets the stored location name */
   return localStorage.getItem('selectedLocation') || 'No Location'; 
@@ -75,8 +88,13 @@ const dialogRef = this.dialog.open(
     if(result) {
       localStorage.removeItem('loggedInUser');
       localStorage.removeItem('selectedLocation');
-      this.router.navigate(['/logoutLoading']);
+      this.router.navigate(['/logoutLoading'], { replaceUrl: true });
     }
   });
+}
+
+adminLogout(): void {
+  localStorage.removeItem('adminLoggedIn');
+  this.router.navigate(['/admin-login']);
 }
 }

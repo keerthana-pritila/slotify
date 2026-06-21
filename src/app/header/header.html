@@ -23,9 +23,9 @@
     </div>
 
     @if(router.url !== '/register' && router.url !== '/login') {
-
+      
     <div class="topRight">
-        @if(!isLoggedIn){
+        @if(!isLoggedIn && !isAdminLoggedIn){
         <button type="button" class="topBtn-Style" routerLink="/register">Register </button>
         <button type="submit" class="topBtn-Style" routerLink="/login">login</button>
         }

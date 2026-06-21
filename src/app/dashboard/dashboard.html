@@ -18,7 +18,8 @@
         <h1>Welcome {{username}}!</h1>
         <p class="subtitle"> Manage your sports bookings and reservations </p>
         <div class="subDashboard">
-            <button class="dashbtn" routerLink="/bookSlot">Book Slot</button>
+            <!-- <button class="dashbtn" routerLink="/bookSlot">Book Slot</button> -->
+             <button class="dashbtn" (click)="goToBookSlot()">Book Slot</button>
             <button class="dashbtn" routerLink="/myBooking">My Bookings</button>
              <button class="dashbtn rewardCard"  routerLink="/rewards"> 🎁 Rewards</button>
             <button class="dashbtn" routerLink="/faq">FAQ</button>

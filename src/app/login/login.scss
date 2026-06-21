@@ -9,7 +9,7 @@ $blueclr: rgb(22 57 93);
     margin: 0;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 130vh;
+    height: 100vh;
     width: 100%;
     background-position: center;
 }
@@ -82,20 +82,23 @@ form {
         background-color: $blueclr;
     }
 }
-.Error{
-color:red;
-font-size:14px;
-margin-top:4px;
-margin-bottom:8px;
+
+.Error {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 8px;
 }
-.forgotLink{
-     color: #16395d;
+
+.forgotLink {
+    color: #16395d;
     cursor: pointer;
-    text-align: right;
+  //  text-align: right;
     font-size: 14px;
     margin-top: 8px;
-     font-weight: 500;
+    font-weight: 500;
 }
+
 .forgotLink:hover {
     color: #f64a0b;
     text-decoration: underline;

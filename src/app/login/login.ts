@@ -6,17 +6,34 @@ import { Api } from '../api';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { ForgotPassword } from '../forgot-password/forgot-password';
+import { OnInit } from '@angular/core';
 @Component({
   selector: 'app-login',
   imports: [RouterLink, FormsModule, ReactiveFormsModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class Login {
+export class Login implements OnInit {
   router = inject(Router);
   api = inject(Api);
   toastr = inject(ToastrService); //Inject Toastr
   dialog = inject(MatDialog);
+
+  ngOnInit(): void {
+    // Check if an admin is already logged in
+    const admin = localStorage.getItem('adminLoggedIn');
+    if (admin) {
+      this.toastr.warning('Admin is already logged in', 'Access Denied');
+      this.router.navigate(['/admin']);  // Redirect to admin dashboard
+      return;
+    }
+
+    // Check if user is logged in
+    const user = localStorage.getItem('loggedInUser'); //Since user exists, immediately redirect:
+    if (user) {
+      this.router.navigate(['/']); // If user data exists in localStorage, navigate to home
+    }
+  }
 
   isvalid: boolean = false;
   loginForm = new FormGroup({
@@ -48,7 +65,8 @@ export class Login {
             users[i].points = 0;
             this.api.updateUser(users[i].id, users[i]).subscribe();
           }
-          
+
+          //This saves the logged-in user in the browser
           localStorage.setItem("loggedInUser", JSON.stringify(users[i]));
           userFound = true;
 
@@ -67,9 +85,13 @@ export class Login {
   forgotPassword(): void {
     this.dialog.open(ForgotPassword, {
       width: '450px',
-      panelClass: 'forgot-password-dialog'
+      panelClass: 'forgot-password-dialog',
       //  added custom class when opening Forgot Password dialog bcz
       // it targets outermost container wrapper of that component & Enables Global Styling
+      data: { type: 'user' }
+      //Pass data to the dialog:like whether its for admin or user
+      //  because using same forgot-password component for both user and admin.
     });
   }
+
 }

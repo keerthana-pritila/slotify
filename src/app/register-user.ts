@@ -3,7 +3,7 @@ export interface RegisterUser {
     phone: string;
     email: string;
     password: string;
-    confirmPassword: string;
+    //confirmPassword: string;
     id: string;
     points?: number; 
     //Use ? because old users don't have the field yet.

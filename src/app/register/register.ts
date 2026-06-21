@@ -67,6 +67,8 @@ export class Register {
     console.log(formData);
 
     this.api.getUsers().subscribe(users => {
+      //GET /users -- JSON Server returns all users from db.json.
+      
       let duplicate = false;
       for (let i = 0; i < users.length; i++) {
         if (users[i].email == formData.email) {

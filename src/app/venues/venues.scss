@@ -1,0 +1,21 @@
+.venuesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    //autofill  -- It tells the browser: "Look at the available width of the parent container,
+    //  and crowd in as many columns as you can fit.
+    gap: 20px;
+
+    .venueCard {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+}

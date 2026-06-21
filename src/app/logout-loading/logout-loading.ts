@@ -14,7 +14,7 @@ export class LogoutLoading {
     setTimeout(() => {
        localStorage.removeItem('loggedInUser');
     localStorage.removeItem('selectedLocation');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login'], { replaceUrl: true });
     }, 2000);
 
   }

@@ -1,12 +1,46 @@
 <div class="adminContainer">
     <div class="sidebar">
         <h2>Slotify Admin</h2>
-        <button routerLink="users"> Users </button>
-        <button routerLink="bookings"> Bookings </button>
-        <button routerLink="venues"> Venues </button>
+        <button class="sidebarBtn" routerLink="/admin">Dashboard</button>
+        <button class="sidebarBtn" routerLink="users"> Users </button>
+        <button class="sidebarBtn" routerLink="bookings"> Bookings </button>
+        <button class="sidebarBtn" routerLink="venues"> Venues </button>
+        <button class="logoutBtn" (click)="adminLogout()">Logout</button>
     </div>
     <div class="content">
+        <!-- @if(router.url === '/admin' && totalUsers >= 0){ -->
+         @if(router.url === '/admin'){
+        <div class="welcomeCard">
+            <h1>Welcome to Slotify Admin Panel</h1>
+            <p>Manage users, bookings, and venues efficiently.</p>
+            <div class="infoBox">
+                <h3>Admin Features:</h3>
+                <ul>
+                    <li>View and manage users</li>
+                    <li>View and manage bookings</li>
+                    <li>View and manage venues</li>
+                </ul>
+            </div>
+
+            <div class="statsContainer">
+                <div class="statCard usersCard">
+                    <h2>{{ totalUsers }}</h2>
+                    <p>Total Users</p>
+                </div>
+
+                <div class="statCard bookingsCard">
+                    <h2>{{ totalBookings }}</h2>
+                    <p>Total Bookings</p>
+                </div>
+
+                <div class="statCard venuesCard">
+                    <h2>{{ totalVenues }}</h2>
+                    <p>Total Venues</p>
+                </div>
+            </div>
+        </div>
+        }
         <router-outlet></router-outlet>
     </div>
-    
+
 </div>

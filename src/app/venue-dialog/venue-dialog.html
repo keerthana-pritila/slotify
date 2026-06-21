@@ -1,0 +1,16 @@
+<h2>{{venue.name}}</h2>
+<div class="venueInfo">
+
+    <p><strong>Location:</strong> {{venue.location}} </p>
+    <p> <strong>Price:</strong> ₹{{venue.price}}</p>
+    <p><strong>Status:</strong> {{venue.status}}</p>
+
+</div>
+
+<div class="actions">
+
+    <button class="editBtn" (click)="editVenue()"> Edit </button>
+    <button class="deleteBtn" (click)="deleteVenue()">Delete </button>
+    <button class="closeBtn" (click)="close()"> Close </button>
+
+</div>

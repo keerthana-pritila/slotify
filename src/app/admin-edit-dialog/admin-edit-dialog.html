@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>Edit User</h2>
+
+<mat-dialog-content>
+
+
+    <form [formGroup]="profileForm">
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" maxlength="10" (keypress)="allowOnlyLetters($event)">
+
+            <!-- Name Error messages -->
+            @if(profileForm.controls.name.errors?.['required']) {
+            <mat-error>Name is required</mat-error>
+            }
+
+            @if(profileForm.controls.name.errors?.['pattern']) {
+            <mat-error>Only letters allowed</mat-error>
+            }
+
+            @if(profileForm.controls.name.errors?.['maxlength']) {
+            <mat-error>Maximum 10 characters allowed</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone" maxlength="10" (keypress)="allowOnlyNumbers($event)">
+
+            <!-- Phone Error messages -->
+            @if(profileForm.controls.phone.errors?.['required']) {
+            <mat-error>Phone is required</mat-error>
+            }
+            @if(profileForm.controls.phone.errors?.['pattern']) {
+            <mat-error>Phone must be exactly 10 digits</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Points</mat-label>
+            <input matInput type="number" formControlName="points">
+
+            <!-- Points Error messages -->
+            @if(profileForm.controls.points.errors?.['required']) {
+            <mat-error>Points are required</mat-error>
+            }
+
+            @if(profileForm.controls.points.errors?.['min']) {
+            <mat-error>Points cannot be negative</mat-error>
+            }
+        </mat-form-field>
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+
+    <button mat-button (click)="dialogRef.close()"> Cancel </button>
+    <button mat-raised-button color="primary" (click)="saveUser()"> Save</button>
+
+</mat-dialog-actions>
