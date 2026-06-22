@@ -1,0 +1,54 @@
+.table-container {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+
+
+    .table-header {
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        color: #16395d;
+        font-size: 28px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .booking-table {
+        width: 100%;
+    }
+
+    .mat-mdc-header-row {
+        background: #16395d !important;
+    }
+
+    .mat-mdc-header-cell {
+        color: white !important;
+        font-weight: 600;
+    }
+
+    .mat-mdc-cell {
+        padding: 16px;
+    }
+
+    .mat-mdc-row:hover {
+        background: #f8fafc;
+    }
+
+    .mat-mdc-row:nth-child(even) {
+        background: #fafafa;
+    }
+
+    .confirmed {
+        color: #28a745;
+        font-weight: 600;
+    }
+
+    .cancelled {
+        color: #dc3545;
+        font-weight: 600;
+    }
+}
