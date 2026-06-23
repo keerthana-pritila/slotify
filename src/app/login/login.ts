@@ -6,14 +6,15 @@ import { Api } from '../api';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { ForgotPassword } from '../forgot-password/forgot-password';
-import { OnInit } from '@angular/core';
+// import { OnInit } from '@angular/core';
 @Component({
   selector: 'app-login',
   imports: [RouterLink, FormsModule, ReactiveFormsModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class Login implements OnInit {
+// export class Login implements OnInit {
+export class Login{
   router = inject(Router);
   api = inject(Api);
   toastr = inject(ToastrService); //Inject Toastr

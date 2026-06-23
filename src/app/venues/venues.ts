@@ -16,25 +16,92 @@ export class Venues {
 
   venues = [
     {
-      id: 1,
-      name: 'Football Turf',
-      location: 'Hyderabad',
-      price: 500,
-      status: 'Active'
+  id: 1,
+  name: 'Football Turf🏈',
+  status: 'Active',
+  locations: [
+    {
+      place: 'Madhapur',
+      price: 500
     },
     {
-      id: 2,
-      name: 'Tennis Court',
-      location: 'Hyderabad',
-      price: 400,
-      status: 'Active'
+      place: 'Gachibowli',
+      price: 600
     },
     {
-      id: 3,
-      name: 'Badminton Arena',
-      location: 'Hyderabad',
+      place: 'Kondapur',
+      price: 550
+    }
+  ]
+},
+    {
+  id: 2,
+  name: 'Tennis Court🎾',
+  status: 'Active',
+  locations: [
+    {
+      place: 'Madhapur',
+      price: 400
+    },
+    {
+      place: 'Attapur',
+      price: 450
+    }
+  ]
+},
+ {
+  id: 3,
+  name: 'Badminton Court🏸',
+  status: 'Active',
+  locations: [
+    {
+      place: 'Madhapur',
+      price: 400
+    },
+    {
+      place: 'Attapur',
+      price: 450
+    }
+  ]
+},
+{
+  id: 4,
+  name: 'Cricket Ground🏏',
+  status: 'Active',
+  locations: [
+    {
+      place: 'Madhapur',
+      price: 400
+    },
+    {
+      place: 'Attapur',
+      price: 450
+    }
+  ]
+},
+{
+  id: 5,
+  name: 'Basketball Ground🏀',
+  status: 'Active',
+  locations: [
+    {
+      place: 'Madhapur',
+      price: 400
+    },
+    {
+      place: 'Attapur',
+      price: 450
+    }
+  ]
+},
+
+
+    {
+      id: 6,
+      name: 'Volleyball Ground🏐',
+      location: 'Madhapur',
       price: 300,
-      status: 'Inactive'
+      status: 'Active'
     }
   ];
 
@@ -53,10 +120,24 @@ export class Venues {
 
   }
 
-  openVenue(venue: any) {
-    this.dialog.open(VenueDialog, {
-      width: '450px',
-      data: venue
-    });
-  }
+  openVenue(venue:any){
+  const dialogRef = this.dialog.open(
+    VenueDialog,
+    {
+      width:'450px',
+      data:venue
+    }
+  );
+
+  dialogRef.afterClosed().subscribe(result => {
+    if(result?.delete){
+      this.venues =
+        this.venues.filter(
+          v => v.id !== result.id
+        );
+    }
+
+  });
+
+}
 }

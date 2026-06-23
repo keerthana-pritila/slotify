@@ -1,8 +1,10 @@
-import { Component,Inject } from '@angular/core';
+import { Component,Inject,inject} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogRef
 } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { DelVenueDialog } from '../del-venue-dialog/del-venue-dialog';
 
 @Component({
   selector: 'app-venue-dialog',
@@ -16,6 +18,7 @@ export class VenueDialog {
     @Inject(MAT_DIALOG_DATA)
     public venue:any
   ){}
+dialog = inject(MatDialog);
 
   close(){
     this.dialogRef.close();
@@ -26,7 +29,20 @@ export class VenueDialog {
   }
 
   deleteVenue(){
-    console.log('Delete clicked');
-  }
+  const dialogRef = this.dialog.open(
+    DelVenueDialog,
+    {
+      width:'350px',
+      data:this.venue
+    }
+  );
+  dialogRef.afterClosed().subscribe(result => {
+    if(result){
+      console.log('Delete venue');
+      this.dialogRef.close({ delete:true, id:this.venue.id });
+    }
+  });
+
+}
 
 }

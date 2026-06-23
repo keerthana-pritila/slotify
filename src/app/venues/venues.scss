@@ -40,6 +40,17 @@
 
     .back {
         transform: rotateY(180deg);
+
+        h4 {
+            color: #16395d;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 15px;
+        }
     }
 
     button {

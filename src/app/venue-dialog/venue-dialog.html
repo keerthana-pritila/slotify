@@ -1,16 +1,15 @@
-<h2>{{venue.name}}</h2>
 <div class="venueInfo">
+    <p><strong>Available Locations</strong></p>
+    @for(location of venue.locations; track location.place){
+    <div class="locationCard">
+        <span>{{location.place}}</span>
+        <span>₹{{location.price}}/hr</span>
+    </div>
 
-    <p><strong>Location:</strong> {{venue.location}} </p>
-    <p> <strong>Price:</strong> ₹{{venue.price}}</p>
-    <p><strong>Status:</strong> {{venue.status}}</p>
-
+    }
+    <p> <strong>Status:</strong> {{venue.status}} </p>
 </div>
-
 <div class="actions">
-
-    <button class="editBtn" (click)="editVenue()"> Edit </button>
-    <button class="deleteBtn" (click)="deleteVenue()">Delete </button>
-    <button class="closeBtn" (click)="close()"> Close </button>
-
+    <button class="deleteBtn" (click)="deleteVenue()"> Delete</button>
+    <button class="closeBtn" (click)="close()">Close</button>
 </div>
