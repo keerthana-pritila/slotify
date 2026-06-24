@@ -1,6 +1,5 @@
-import { Component, inject, ChangeDetectorRef } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { OnInit } from '@angular/core';
+import { Component, inject, ChangeDetectorRef ,OnInit} from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { LogoutDialog } from '../logout-dialog/logout-dialog';
 import { Api } from '../api';
@@ -8,7 +7,7 @@ import { Api } from '../api';
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink,RouterLinkActive],
   templateUrl: './admin.html',
   styleUrl: './admin.scss',
 })

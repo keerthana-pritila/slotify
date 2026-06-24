@@ -1,0 +1,36 @@
+<div class="flipCard" [class.flipped]="flipped" (click)="flipCard()">
+
+    <div class="flipInner">
+
+        <!-- FRONT SIDE -->
+
+        <div class="venueCard front">
+            <img 
+            [src]="venue.image"
+             [alt]="venue.name"
+              class="venueImage">
+              
+            <div class="overlay">
+                <h3>{{venue.name}}</h3>
+
+                <span class="status">
+                    <span 
+                    class="dot"
+                     [class.green]="venue.status === 'Active'"
+                    [class.red]="venue.status === 'Inactive'">
+                    </span>
+                    {{venue.status}}
+                </span>
+            </div>
+        </div>
+
+        <!-- BACK SIDE -->
+        <div class="venueCard back">
+            <h4> {{venue.locations.length}} Locations</h4>
+            <p> Starting from ₹{{venue.locations[0].price}}/hr</p>
+            <!-- picks the first price and tells staring price hourly  -->
+            <button (click)="openDetails($event)"> View Details </button>
+
+        </div>
+    </div>
+</div>

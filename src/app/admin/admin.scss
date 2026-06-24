@@ -25,6 +25,13 @@
         &:hover {
             background: #c4c0be;
         }
+
+        &.activeBtn {
+           // background: #eb6f42;
+            background-color: #28a745;
+            color: white;
+            font-weight: 600;
+        }
     }
 
     .logoutBtn {
@@ -53,7 +60,7 @@
             //background: white;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(12px);
-           // -webkit-backdrop-filter: blur(12px);
+            // -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.2);
 
             padding: 30px;

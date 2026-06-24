@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { VenueDialog } from '../venue-dialog/venue-dialog';
 import { CommonModule } from '@angular/common';
-
+import { VenueCard } from '../venue-card/venue-card';
 
 @Component({
   selector: 'app-venues',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule,VenueCard],
   templateUrl: './venues.html',
   styleUrl: './venues.scss',
 })
@@ -18,7 +19,9 @@ export class Venues {
     {
   id: 1,
   name: 'Football Turf🏈',
+    type: 'Outdoor',
   status: 'Active',
+  image:'/images/football.jpg',
   locations: [
     {
       place: 'Madhapur',
@@ -37,7 +40,9 @@ export class Venues {
     {
   id: 2,
   name: 'Tennis Court🎾',
+  type: 'Indoor',
   status: 'Active',
+  image:'/images/tennis.jpeg',
   locations: [
     {
       place: 'Madhapur',
@@ -52,7 +57,9 @@ export class Venues {
  {
   id: 3,
   name: 'Badminton Court🏸',
+  type: 'Indoor',
   status: 'Active',
+  image:'/images/badminton.jpeg',
   locations: [
     {
       place: 'Madhapur',
@@ -67,7 +74,9 @@ export class Venues {
 {
   id: 4,
   name: 'Cricket Ground🏏',
+    type: 'Outdoor',
   status: 'Active',
+  image:'/images/cricket.jpeg',
   locations: [
     {
       place: 'Madhapur',
@@ -82,7 +91,9 @@ export class Venues {
 {
   id: 5,
   name: 'Basketball Ground🏀',
+    type: 'Outdoor',
   status: 'Active',
+  image:'/images/basketball.jpeg',
   locations: [
     {
       place: 'Madhapur',
@@ -91,18 +102,41 @@ export class Venues {
     {
       place: 'Attapur',
       price: 450
+    },
+    {
+      place: 'Gachibowli',
+      price: 600
     }
   ]
 },
-
-
+{
+   id: 6,
+  name: 'Volleyball Ground🏐',
+    type: 'Outdoor',
+  status: 'Active',
+  image:'/images/volleyball.jpeg',
+  locations: [
     {
-      id: 6,
-      name: 'Volleyball Ground🏐',
-      location: 'Madhapur',
-      price: 300,
-      status: 'Active'
+      place: 'Madhapur',
+      price: 400
+    },
+    {
+      place: 'Gachibowli',
+      price: 600
+    },
+    {
+      place: 'Attapur',
+      price: 450
     }
+  ]
+}
+    // {
+    //   id: 6,
+    //   name: 'Volleyball Ground🏐',
+    //   location: 'Madhapur',
+    //   price: 300,
+    //   status: 'Active'
+    // }
   ];
 
   flipCard(id: number) {

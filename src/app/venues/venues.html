@@ -1,35 +1,41 @@
 <h2>Venue Management</h2>
 <div class="venuesGrid">
-    @for(venue of venues; track venue.id){
-    <div class="flipCard" [class.flipped]="flippedCard === venue.id" (click)="flipCard(venue.id)">
+     @for(venue of venues; track venue.id) {
+           <!-- Parent sends venue & This reaches child component:@Input() venue:any 
+            Parent sends flip state  -->
+         <app-venue-card
+            [venue]="venue" 
+            [flipped]="flippedCard === venue.id" 
+            (flip)="flipCard($event)"
+            (viewDetails)="openVenue($event)">
+        </app-venue-card>
+    }
+
+
+    <!-- <div class="flipCard" [class.flipped]="flippedCard === venue.id" (click)="flipCard(venue.id)">
         <div class="flipInner">
-            <!-- FRONT SIDE -->
-            <div class="venueCard front">
+
+            FRONT SIDE --> 
+            <!-- <div class="venueCard front">
                 <h3>{{venue.name}}</h3>
 
                 <span class="status">
-                    <span class="dot"
-                         [class.green]="venue.status === 'Active'"
+                    <span class="dot" [class.green]="venue.status === 'Active'"
                         [class.red]="venue.status === 'Inactive'">
                     </span>
                     {{venue.status}}
                 </span>
-            </div>
-            <!-- BACK SIDE -->
-            <div class="venueCard back">
-                <!-- <p>{{venue.location}}</p>
-                <p>₹{{venue.price}} / hr</p>
-                <button (click)="openVenue(venue); $event.stopPropagation()">View Details</button> -->
-                <!-- Without $event.stopPropagation() -- after Click on view details --then Card flips back immediately -->
+            </div> -->
 
-                <h4> {{venue.locations?.length}} Locations</h4>
-                <p> Starting from ₹{{venue.locations?.[0]?.price}}/hr</p>
-                <button (click) = "openVenue(venue); $event.stopPropagation()"> View Details </button>
-                <!-- ?. is called optional chaining. -->
-                 <!-- means If locations exists → show the value.
-                If not → don't crash. -->
-            </div>
+            <!-- BACK SIDE
+            <div class="venueCard back">
+                <h4> {{venue.locations.length}} Locations</h4>
+                <p> Starting from ₹{{venue.locations[0].price}}/hr</p>
+                picks the first price and tells staring price hourly  -->
+                <!-- <button (click)="openVenue(venue); $event.stopPropagation()"> View Details </button>
+                Without $event.stopPropagation() -- after Click on view details --then Card flips back immediately -->
+            <!-- </div>
         </div>
-        </div>
-        }
     </div>
+    } -->
+</div>

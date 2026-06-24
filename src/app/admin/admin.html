@@ -1,10 +1,16 @@
 <div class="adminContainer">
     <div class="sidebar">
         <h2>Slotify Admin</h2>
-        <button class="sidebarBtn" routerLink="/admin">Dashboard</button>
-        <button class="sidebarBtn" routerLink="users"> Users </button>
-        <button class="sidebarBtn" routerLink="bookings"> Bookings </button>
-        <button class="sidebarBtn" routerLink="venues"> Venues </button>
+        <button 
+        class="sidebarBtn"
+         routerLink="/admin"
+         routerLinkActive="activeBtn"
+         [routerLinkActiveOptions]="{exact:true}" >
+         Dashboard
+         </button>
+        <button class="sidebarBtn" routerLink="users" routerLinkActive="activeBtn"> Users </button>
+        <button class="sidebarBtn" routerLink="bookings" routerLinkActive="activeBtn"> Bookings </button>
+        <button class="sidebarBtn" routerLink="venues" routerLinkActive="activeBtn"> Venues </button>
         <button class="logoutBtn" (click)="adminLogout()">Logout</button>
     </div>
     <div class="content">
