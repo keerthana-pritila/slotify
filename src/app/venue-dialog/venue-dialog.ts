@@ -13,10 +13,10 @@ import { DelVenueDialog } from '../del-venue-dialog/del-venue-dialog';
   styleUrl: './venue-dialog.scss',
 })
 export class VenueDialog {
+   public venue:any
    constructor(
     public dialogRef:MatDialogRef<VenueDialog>,
-    @Inject(MAT_DIALOG_DATA)
-    public venue:any
+    @Inject(MAT_DIALOG_DATA) private matDialog: any
   ){}
 dialog = inject(MatDialog);
 

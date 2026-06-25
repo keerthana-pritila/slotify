@@ -14,7 +14,7 @@ const PHONE_PATTERN = '^[0-9]{10}$';
 
 @Component({
   selector: 'app-admin-edit-dialog',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule,MatDialogModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatDialogModule],
   templateUrl: './admin-edit-dialog.html',
   styleUrl: './admin-edit-dialog.scss',
 })
@@ -22,7 +22,8 @@ export class AdminEditDialog {
   api = inject(Api);
   dialogRef = inject(MatDialogRef<AdminEditDialog>);
   toastr = inject(ToastrService);
-
+  public user: any
+  
   profileForm = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -33,8 +34,8 @@ export class AdminEditDialog {
     points: new FormControl(0, [Validators.required, Validators.min(0)])
   });
   constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public user: any
+    @Inject(MAT_DIALOG_DATA) private matDialog: any
+
   ) { }
 
   //Letter only function

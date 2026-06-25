@@ -87,7 +87,7 @@ export class Login{
     this.dialog.open(ForgotPassword, {
       width: '450px',
       panelClass: 'forgot-password-dialog',
-      //  added custom class when opening Forgot Password dialog bcz
+      //  added custom class when opening Forgot Password dialog bcz,
       // it targets outermost container wrapper of that component & Enables Global Styling
       data: { type: 'user' }
       //Pass data to the dialog:like whether its for admin or user

@@ -3,7 +3,8 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url("imagez.jpeg");
+    // background-image: url("imagez.jpeg");
+    background-image: url("/images/imagez copy.jpeg");
     background-size: cover;
 }
 
@@ -78,6 +79,16 @@
             color: white;
             box-shadow: 0 4px 12px rgba(244, 81, 18, .4);
         }
+    }
+
+    .weatherAlert {
+        margin: 20px 0;
+        padding: 14px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, .3);
+        color: #16395d;
+        font-weight: 600;
+        border-left: 5px solid #f45112;
     }
 
     .venueGrid {
@@ -173,9 +184,11 @@
             transform: translateY(-2px);
         }
     }
-    .qr-popup{
+
+    .qr-popup {
         display: none;
     }
+
     .active {
         display: block;
     }

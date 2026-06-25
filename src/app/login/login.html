@@ -1,7 +1,12 @@
 <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
     <h1>Login</h1>
+
+    <!-- EMAIL FIELD: -->
+
     <label>email:</label>
     <input type="email" formControlName="email" />
+
+    <!-- EMAIL ERROR: -->
     @if(loginForm.controls.email.touched &&
     loginForm.controls.email.errors?.['required']){
     <span class="Error">*Email is required</span>
@@ -10,8 +15,13 @@
     loginForm.controls.email.errors?.['email']){
     <span class="Error">*Enter valid email</span>
     }
+
+    <!-- PASSWORD FIELD: -->
+
     <label>password:</label>
     <input type="password" formControlName="password" />
+
+    <!-- PASSWORD ERROR: -->
     @if(loginForm.controls.password.touched &&
     loginForm.controls.password.errors?.['required']){
     <span class="Error">*Password required</span>
@@ -20,11 +30,16 @@
     loginForm.controls.password.errors?.['minlength']){
     <span class="Error">*Minimum 3 characters</span>
     }
+
+    <!-- FORGOT PASSWORD: -->
     <p class="forgotLink" (click)="forgotPassword()">Forgot Password?</p>
+
+    <!-- SUBMIT: -->
     <div class="submitRow">
         <input type="submit" value="submit" class="primary" [disabled]="loginForm.invalid" />
     </div>
 
+    <!-- NEW USER , BACK BUTTONS: -->
     <div class="bottomBtns">
         <input type="button" class="secoundary" value="backtoHome" routerLink="/" />
 

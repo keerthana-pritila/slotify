@@ -1,9 +1,14 @@
 <form [formGroup]="registrationForm" (ngSubmit)="onRegistration()">
     <h1>Registration Form</h1>
+
     <div class="regformStyle">
+
+        <!-- NAME FIELD: -->
         <label for="name"> Name:</label>
         <input type="text" formControlName="name" (keypress)="allowOnlyLetters($event)" maxlength="10"
             [class.error-border]="registrationForm.controls.name.invalid && registrationForm.controls.name.touched" />
+
+        <!-- NAME ERRORS: -->
         @if (registrationForm.controls.name.invalid && registrationForm.controls.name.touched) {
         <span class="Error">*Enter your name</span>
         }
@@ -13,17 +18,25 @@
     </div>
 
     <div class="regformStyle">
+
+        <!-- PHONE FIELD: -->
         <label for="phone"> Phone:</label>
         <input type="text" formControlName="phone" (keypress)="allowonlyNumbers($event)" maxlength="10"
             [class.error-border]="registrationForm.controls.phone.invalid && registrationForm.controls.phone.touched" />
+
+        <!-- PHONE ERRORS: -->
         @if (registrationForm.controls.phone.invalid && registrationForm.controls.phone.touched) {
         <span class="Error">*Enter Phone number </span>
         }
     </div>
     <div class="regformStyle">
+
+        <!-- EMAIL FIELD: -->
         <label for="email"> Email:</label>
         <input type="email" formControlName="email"
             [class.error-border]="registrationForm.controls.email.invalid && registrationForm.controls.email.touched" />
+
+        <!-- EMAIL ERRORS: -->
         @if (registrationForm.controls.email.errors?.['required'] && registrationForm.controls.email.touched) {
         <span class="Error">*Email is required</span>
         }
@@ -33,14 +46,20 @@
 
     </div>
     <div class="regformStyle">
+
+        <!-- PASSWORD FIELD: -->
         <label for="password"> Password:</label>
         <input type="password" formControlName="password" (input)="checkPassword()"
             [class.error-border]="registrationForm.controls.password.invalid && registrationForm.controls.password.touched" />
+
+        <!-- PASSWORD ERRORS: -->
         @if (registrationForm.controls.password.invalid && registrationForm.controls.password.touched) {
         <span class="Error">*Enter Password </span>
         }
     </div>
     <div class="regformStyle">
+
+        <!-- CONFIRM PASSWORD FIELD: -->
         <label for="confirmPassword"> Confirm Password:</label>
         <input type="password" formControlName="confirmPassword" (input)="checkPassword()"
             [class.error-border]="registrationForm.controls.confirmPassword.invalid && registrationForm.controls.confirmPassword.touched" />
@@ -53,25 +72,13 @@
 
     </div>
     <div class="submitBtnStyle">
-        
-           <input  type="submit" value="Submit" [disabled]="registrationForm.invalid || passwordMismatch" />
-           <!-- This makes the button itself inactive until valid -->
+
+        <input type="submit" value="Submit" [disabled]="registrationForm.invalid || passwordMismatch" />
+        <!-- This makes the button itself inactive until valid -->
     </div>
     <div class="loginBackbtns">
         <p>Existing User? Then login</p>
         <input (click)="login()" type="button" value="login" routerLink="/login">
-         <input  type="button" value="backtoHome" routerLink ="/" />
+        <input type="button" value="backtoHome" routerLink="/" />
     </div>
 </form>
-<!-- @if(showSuccessPopUp) {
-    <div class = "containerPopUp">
-        <div class = "popUpBox">
-        <h2>Registration Successfull!</h2>
-    <p>Your account has been created successfully.</p>
-    <button (click)="closePopUp()">OK</button>
-    </div>
-    </div>
-} -->
-
-
-

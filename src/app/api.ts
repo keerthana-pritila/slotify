@@ -20,7 +20,7 @@ export class Api {
   }
   // Observable--returns array []of RegisterUser objects
   getUsers(): Observable<RegisterUser[]> {
-    return this.http.get<RegisterUser[]>(this.url); //get--fetch data
+    return this.http.get<RegisterUser[]>(this.url); //get--fetch data (get data from server or API)
   }
 
   updateUser(id: string, user: any) {

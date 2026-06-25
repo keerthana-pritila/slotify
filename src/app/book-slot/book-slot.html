@@ -18,20 +18,29 @@
         <div [class.active]="currentStep>=5">Payment</div>
         <div [class.active]="currentStep>=6">Done</div>
     </div>
+
+    <!-- It checks if the variable weatherMessage has any text inside it.
+    If it is empty (null/undefined): Angular completely hides the <div> box from the screen.
+    If it has text: Angular creates the <div> box and displays the text inside it using {{weatherMessage}}. -->
+    @if (weatherMessage) {
+    <div class="weatherAlert">
+        {{weatherMessage}}
+    </div>
+    }
+
     @if(currentStep == 1) {
     <h2>Select Venue</h2>
     <div class="venueGrid">
-        @for (venue of venues; track venue) {
+        @for (venue of venues; track venue.name) {
         <!-- <button class="venuebtn" (click)="selectedVenue=venue"
             [class.selected]="selectedVenue==venue">{{venue}}</button> -->
-            <button class="venuebtn" (click)="selectVenue(venue)"
-            [class.selected]="selectedVenue==venue">{{venue}}</button>
+        <button class="venuebtn" (click)="selectVenue(venue)" [class.selected]="selectedVenue==venue.name">{{venue.name}}</button>
         }
     </div>
     }
     @if(currentStep == 2) {
     <h2>Select Date</h2>
-    <input type="date" [(ngModel)]="selectedDate" [min]="minDate" (ngModelChange)="onDateChange($event)"/>
+    <input type="date" [(ngModel)]="selectedDate" [min]="minDate" (ngModelChange)="onDateChange($event)" />
     <!-- minDate -old dates will be disabled -->
     }
     @if(currentStep == 3) {
@@ -45,12 +54,13 @@
     @if(currentStep == 4) {
     <h2>Booking Summary</h2>
     <p>Location:{{selectedLocation}}</p>
+    <p>Distance: {{distanceKm}} km away</p>
     <p>Venue: {{selectedVenue}}</p>
     <p>Date: {{selectedDate}}</p>
     <p>Time: {{selectedTime}}</p>
     <button class="confirmbtn" (click)="nextStep()">Proceed to payment </button>
     }
-     <!-- <fa-icon [icon]="closeIcon"></fa-icon> -->
+    <!-- <fa-icon [icon]="closeIcon"></fa-icon> -->
     @if(currentStep == 5) {
     <h2>Make Payment</h2>
     <p>Total Amount : ₹{{bookingAmount}}</p>
@@ -80,7 +90,7 @@
         @if(currentStep > 1) {
         <button (click)="prevStep()">Back</button>
         }
-        @if(currentStep < 6) { <button (click)="nextStep()"[disabled]="cannotGoNext()">Next</button>
+        @if(currentStep < 6) { <button (click)="nextStep()" [disabled]="cannotGoNext()">Next</button>
             }
     </div>
 </div>

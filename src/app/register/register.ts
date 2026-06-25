@@ -116,10 +116,7 @@ export class Register {
       }
     });
   }
-  // closePopUp(): void {
-  //   this.showSuccessPopUp = false;
-  //   this.router.navigate(['/login']); //goes to login page
-  // }
+ 
   allowOnlyLetters(event: KeyboardEvent): void {
     //allowOnlyLetters -- function name
     //event: KeyboardEvent -- receives keyboard event information when user presses a key
